@@ -26,7 +26,7 @@ class Custom_View : public QGraphicsView
     Q_OBJECT
 public:
     explicit Custom_View(QWidget *parent);
-    void loadImage(const QString &filename); // Добавляем новую функцию для загрузки изображения
+    void loadImage(const QString &filename);
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *event);
