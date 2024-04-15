@@ -1,4 +1,5 @@
 #include "events.h"
+#include "imageviewerwindow.h"
 
 Events::Events()
 {
@@ -36,6 +37,7 @@ void Custom_View::dropEvent(QDropEvent *event)
 {
     if (event->source() == this)
         return;
+
     QDropEvent *dropEvent = static_cast<QDropEvent *>(event);
     if (dropEvent->mimeData()->hasUrls())
     {
@@ -45,7 +47,12 @@ void Custom_View::dropEvent(QDropEvent *event)
             if (url.isLocalFile())
             {
                 QString filePath = url.toLocalFile();
-                loadImage(filePath);
+
+                // Создаем новое окно ImageViewerWindow
+                ImageViewerWindow *imageViewerWindow = new ImageViewerWindow;
+                imageViewerWindow->loadImage(filePath);
+                imageViewerWindow->show();
+
                 dropEvent->acceptProposedAction();
             }
         }
