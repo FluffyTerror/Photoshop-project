@@ -10,13 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     events.cpp \
-    imageviewerwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     events.h \
-    imageviewerwindow.h \
     mainwindow.h
 
 FORMS += \

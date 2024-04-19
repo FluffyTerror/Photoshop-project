@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::on_pushButton_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +22,9 @@ void MainWindow::on_pushButton_clicked()
     if (!filename.isEmpty()) {
         Custom_View *customView = ui->graphicsView;
         customView->loadImage(filename);
+    }
+    else{
+
     }
 }
 //void MainWindow::on_pushButton_clicked()
