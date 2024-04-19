@@ -39,7 +39,13 @@ void MainWindow::on_Monochrome_clicked()
     }
 
     // Создаем копию изображения
-    QImage originalImage = qgraphicsitem_cast<QGraphicsPixmapItem>(item).pixmap().toImage();
+    QGraphicsPixmapItem *pixmapItem = qgraphicsitem_cast<QGraphicsPixmapItem*>(item);
+    if (!pixmapItem) {
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return;
+    }
+
+    QImage originalImage = pixmapItem->pixmap().toImage();
     QImage monochromeImage = originalImage.copy(); // Создаем копию оригинального изображения
 
     // Преобразуем копию в монохромное изображение
@@ -52,10 +58,10 @@ void MainWindow::on_Monochrome_clicked()
     }
 
     // Сохраняем оригинальное и монохромное изображения для возможности отката
-    originalPixmapItem=  *new QGraphicsPixmapItem(QPixmap::fromImage(originalImage));
-    monochromePixmapItem=  *new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
+    originalPixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(originalImage));
+    monochromePixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
 
     // Добавляем монохромное изображение на сцену и отображаем его
-    ui->graphicsView->scene->addItem(&monochromePixmapItem);
-    ui->graphicsView->fitInView(&monochromePixmapItem, Qt::KeepAspectRatio);
+    ui->graphicsView->scene->addItem(monochromePixmapItem);
+    ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
 }

@@ -17,8 +17,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QGraphicsPixmapItem monochromePixmapItem;
-    QGraphicsPixmapItem  originalPixmapItem;
+    QGraphicsPixmapItem * monochromePixmapItem;
+    QGraphicsPixmapItem * originalPixmapItem;
 
 public slots:
    void on_Select_clicked();
