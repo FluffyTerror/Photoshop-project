@@ -27,6 +27,7 @@ class Custom_View : public QGraphicsView
 public:
     explicit Custom_View(QWidget *parent);
     void loadImage(const QString &filename);
+    QGraphicsScene *scene;
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *event);
@@ -34,7 +35,7 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
-    QGraphicsScene *scene;
+
 };
 
 #endif // EVENTS_H
