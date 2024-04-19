@@ -31,9 +31,13 @@ void MainWindow::on_Select_clicked()
 
 void MainWindow::on_Monochrome_clicked()
 {
+    if (ui->graphicsView->scene->items().isEmpty()) {
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return; // Пропускаем выполнение остальной части функции
+    }
     // Получаем текущее изображение из сцены
     QGraphicsItem *item = ui->graphicsView->scene->items().first(); // Предполагается, что на сцене только один элемент
-    if (!item) {
+    if (item==NULL) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
