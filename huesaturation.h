@@ -21,7 +21,9 @@ private slots:
     void on_HueSlider_valueChanged(int value);
 
     void on_CancelButton_clicked();
-
+signals:
+    void saturationChanged(int saturation);
+    void hueChanged(int hue);
 private:
     Ui::huesaturation *ui;
 };

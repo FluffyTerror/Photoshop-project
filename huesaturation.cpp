@@ -39,12 +39,13 @@ huesaturation::~huesaturation()
 void huesaturation::on_SaturationSlider_valueChanged(int value)
 {
     ui->label_3->setText(QString::number(value));
+    emit saturationChanged(value);//передача аргумента по слоту
 }
-
 
 void huesaturation::on_HueSlider_valueChanged(int value)
 {
     ui->label_4->setText(QString::number(value));
+    emit hueChanged(value);
 }
 
 

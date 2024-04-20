@@ -19,6 +19,8 @@ public:
     ~MainWindow();
     QGraphicsPixmapItem * monochromePixmapItem;
     QGraphicsPixmapItem * originalPixmapItem;
+    void on_valuesChangedSaturation(int saturation);
+    void on_valuesChangedHue(int hue);
 
 public slots:
    void on_Select_clicked();

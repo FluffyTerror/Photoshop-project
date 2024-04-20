@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
+
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +44,8 @@ void MainWindow::on_Monochrome_clicked()
         }
         huesaturation *hueSaturationForm = new huesaturation();
         hueSaturationForm->show();
+        connect(hueSaturationForm, &huesaturation::saturationChanged, this, &MainWindow::on_valuesChangedSaturation);
+        connect(hueSaturationForm, &huesaturation::hueChanged, this, &MainWindow::on_valuesChangedHue);
         return;
     }
 
@@ -86,3 +89,14 @@ void MainWindow::on_Monochrome_clicked()
     ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
 }
 
+
+//малыши для теста того что связь между формами работает
+void MainWindow::on_valuesChangedSaturation(int saturation)
+{
+    ui->saturationLabel->setText(QString::number(saturation));
+}
+
+void MainWindow::on_valuesChangedHue(int hue)
+{
+    ui->hueLabel->setText(QString::number(hue));
+}
