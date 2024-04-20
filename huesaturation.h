@@ -15,6 +15,13 @@ public:
     explicit huesaturation(QWidget *parent = nullptr);
     ~huesaturation();
 
+private slots:
+    void on_SaturationSlider_valueChanged(int value);
+
+    void on_HuelSlider_valueChanged(int value);
+
+    void on_CancelButton_clicked();
+
 private:
     Ui::huesaturation *ui;
 };

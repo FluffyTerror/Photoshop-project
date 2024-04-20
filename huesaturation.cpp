@@ -12,3 +12,21 @@ huesaturation::~huesaturation()
 {
     delete ui;
 }
+
+void huesaturation::on_SaturationSlider_valueChanged(int value)
+{
+    ui->label_3->setText(QString::number(value));
+}
+
+
+void huesaturation::on_HuelSlider_valueChanged(int value)
+{
+    ui->label_4->setText(QString::number(value));
+}
+
+
+void huesaturation::on_CancelButton_clicked()
+{
+     this->close();
+}
+

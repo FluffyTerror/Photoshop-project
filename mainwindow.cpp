@@ -39,7 +39,7 @@ void MainWindow::on_Monochrome_clicked()
     if (reply == QMessageBox::No)
     {    if (ui->graphicsView->scene->items().isEmpty()) {
             QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
-            return; // Пропускаем выполнение остальной части функции
+            return;
         }
         huesaturation *hueSaturationForm = new huesaturation();
         hueSaturationForm->show();
