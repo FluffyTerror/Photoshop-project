@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "huesaturation.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -6,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 
 }
 
@@ -31,6 +33,20 @@ void MainWindow::on_Select_clicked()
 
 void MainWindow::on_Monochrome_clicked()
 {
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, tr("Confirmation"), tr("Хотите преобразовать в монохромное изображение с использованием авто настроек?"),
+                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::No)
+    {    if (ui->graphicsView->scene->items().isEmpty()) {
+            QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+            return; // Пропускаем выполнение остальной части функции
+        }
+        huesaturation *hueSaturationForm = new huesaturation();
+        hueSaturationForm->show();
+        return;
+    }
+
+
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return; // Пропускаем выполнение остальной части функции
@@ -69,3 +85,4 @@ void MainWindow::on_Monochrome_clicked()
     ui->graphicsView->scene->addItem(monochromePixmapItem);
     ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
 }
+

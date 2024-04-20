@@ -23,7 +23,7 @@ public:
 public slots:
    void on_Select_clicked();
    void on_Monochrome_clicked();
-private:
+   private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

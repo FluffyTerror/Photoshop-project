@@ -10,14 +10,17 @@ CONFIG += c++17
 
 SOURCES += \
     events.cpp \
+    huesaturation.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     events.h \
+    huesaturation.h \
     mainwindow.h
 
 FORMS += \
+    huesaturation.ui \
     mainwindow.ui
 
 # Default rules for deployment.
