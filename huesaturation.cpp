@@ -8,6 +8,10 @@ huesaturation::huesaturation(QWidget *parent) :
     ui->setupUi(this);
     ui->HueSlider->setRange(0, 360);
     ui->SaturationSlider->setRange(-100,100);
+
+    initialSaturation = ui->SaturationSlider->value();
+    initialHue = ui->HueSlider->value();
+
     QString gradientColors;
     for (int i = 0; i < 360; ++i) {
         QString color = QColor::fromHsv(i, 255, 255).name();
@@ -51,6 +55,22 @@ void huesaturation::on_HueSlider_valueChanged(int value)
 
 void huesaturation::on_CancelButton_clicked()
 {
-     this->close();
+    ui->SaturationSlider->setValue(initialSaturation);
+    ui->HueSlider->setValue(initialHue);
+
+    this->close();
+}
+
+void huesaturation::on_AcceptButton_clicked()
+{
+    // Сохраняем текущие значения насыщенности и оттенка
+    int saturation = ui->SaturationSlider->value();
+    int hue = ui->HueSlider->value();
+
+    // Передаем значения насыщенности и оттенка через сигнал
+    emit parametersAccepted(saturation, hue);
+
+    this->close();
+
 }
 

@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "huesaturation.h"
 #include "qgraphicsitem.h"
 #include <QMainWindow>
 
@@ -21,6 +22,7 @@ public:
     QGraphicsPixmapItem * originalPixmapItem;
     void on_valuesChangedSaturation(int saturation);
     void on_valuesChangedHue(int hue);
+    void on_MonochromeParametersChanged(int saturation, int hue);
 
 public slots:
    void on_Select_clicked();

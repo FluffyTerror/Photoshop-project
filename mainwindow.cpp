@@ -8,8 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
 }
 
 MainWindow::~MainWindow()
@@ -46,6 +44,7 @@ void MainWindow::on_Monochrome_clicked()
         hueSaturationForm->show();
         connect(hueSaturationForm, &huesaturation::saturationChanged, this, &MainWindow::on_valuesChangedSaturation);
         connect(hueSaturationForm, &huesaturation::hueChanged, this, &MainWindow::on_valuesChangedHue);
+
         return;
     }
 
@@ -89,6 +88,42 @@ void MainWindow::on_Monochrome_clicked()
     ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
 }
 
+
+
+void MainWindow::on_MonochromeParametersChanged(int saturation, int hue)
+{
+    QGraphicsItem *item = ui->graphicsView->scene->items().first(); // Предполагается, что на сцене только один элемент
+    if (item==NULL) {
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return;
+    }
+
+    // Создаем копию изображения
+    QGraphicsPixmapItem *pixmapItem = qgraphicsitem_cast<QGraphicsPixmapItem*>(item);
+    if (!pixmapItem) {
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return;
+    }
+
+    QImage originalImage = pixmapItem->pixmap().toImage();
+    QImage monochromeImage = originalImage.copy(); // Создаем копию оригинального изображения
+
+    // Преобразуем копию в монохромное изображение
+    for (int y = 0; y < monochromeImage.height(); ++y) {
+        for (int x = 0; x < monochromeImage.width(); ++x) {
+            QColor color = QColor::fromHsv(hue, saturation, qGray(monochromeImage.pixelColor(x, y).rgb()));
+            monochromeImage.setPixelColor(x, y, color);
+        }
+    }
+
+    // Сохраняем оригинальное и монохромное изображения для возможности отката
+    originalPixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(originalImage));
+    monochromePixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
+
+    // Добавляем монохромное изображение на сцену и отображаем его
+    ui->graphicsView->scene->addItem(monochromePixmapItem);
+    ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
+}
 
 //малыши для теста того что связь между формами работает
 void MainWindow::on_valuesChangedSaturation(int saturation)
