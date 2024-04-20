@@ -18,7 +18,7 @@ public:
 private slots:
     void on_SaturationSlider_valueChanged(int value);
 
-    void on_HuelSlider_valueChanged(int value);
+    void on_HueSlider_valueChanged(int value);
 
     void on_CancelButton_clicked();
 

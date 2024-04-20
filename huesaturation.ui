@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QSlider" name="HuelSlider">
+  <widget class="QSlider" name="HueSlider">
    <property name="geometry">
     <rect>
      <x>70</x>
