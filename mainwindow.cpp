@@ -44,7 +44,7 @@ void MainWindow::on_Monochrome_clicked()
         hueSaturationForm->show();
         connect(hueSaturationForm, &huesaturation::saturationChanged, this, &MainWindow::on_valuesChangedSaturation);
         connect(hueSaturationForm, &huesaturation::hueChanged, this, &MainWindow::on_valuesChangedHue);
-
+        connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_MonochromeParametersChanged);
         return;
     }
 
