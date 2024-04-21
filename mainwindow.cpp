@@ -93,7 +93,7 @@ void MainWindow::on_Monochrome_clicked()
 void MainWindow::on_MonochromeParametersChanged(int saturation, int hue)
 {
     QGraphicsItem *item = ui->graphicsView->scene->items().first(); // Предполагается, что на сцене только один элемент
-    if (item==NULL) {
+    if (item == nullptr) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
@@ -111,19 +111,22 @@ void MainWindow::on_MonochromeParametersChanged(int saturation, int hue)
     // Преобразуем копию в монохромное изображение
     for (int y = 0; y < monochromeImage.height(); ++y) {
         for (int x = 0; x < monochromeImage.width(); ++x) {
-            QColor color = QColor::fromHsv(hue, saturation, qGray(monochromeImage.pixelColor(x, y).rgb()));
-            monochromeImage.setPixelColor(x, y, color);
+            QColor originalColor = monochromeImage.pixelColor(x, y);
+            int gray = qGray(originalColor.rgb());
+            QColor newColor = QColor::fromHsv((hue * 359) / 360, (saturation + 100) * 255 / 200, gray);
+            monochromeImage.setPixelColor(x, y, newColor);
         }
     }
 
     // Сохраняем оригинальное и монохромное изображения для возможности отката
-    originalPixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(originalImage));
-    monochromePixmapItem=  new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
+    originalPixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(originalImage));
+    monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
 
     // Добавляем монохромное изображение на сцену и отображаем его
     ui->graphicsView->scene->addItem(monochromePixmapItem);
     ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
 }
+
 
 //малыши для теста того что связь между формами работает
 void MainWindow::on_valuesChangedSaturation(int saturation)
