@@ -74,3 +74,17 @@ void huesaturation::on_AcceptButton_clicked()
 
 }
 
+
+void huesaturation::on_SaturationSlider_sliderMoved(int position)
+{
+
+
+}
+
+
+void huesaturation::on_AutoButton_clicked()
+{
+    emit autoAccepted(1);
+    this->close();
+}
+

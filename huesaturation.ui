@@ -84,7 +84,7 @@
   <widget class="QPushButton" name="CancelButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>20</x>
      <y>260</y>
      <width>80</width>
      <height>24</height>
@@ -144,6 +144,19 @@
    </property>
    <property name="text">
     <string>Значение</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AutoButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>260</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Авто</string>
    </property>
   </widget>
  </widget>
