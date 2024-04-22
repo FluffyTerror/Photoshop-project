@@ -21,15 +21,17 @@ public:
     QGraphicsPixmapItem * monochromePixmapItem;
     QGraphicsPixmapItem * originalPixmapItem;
     huesaturation *hueSaturationForm;
+    QImage *loadedImage;
 
 public slots:
    void on_Select_clicked();
    void on_Monochrome_clicked();
-   void on_valuesChangedSaturation(int saturation);
-   void on_valuesChangedHue(int hue);
    void on_MonochromeParametersChanged(int saturation, int hue);
-   void on_MonochromeAuto(bool yes);
+   void on_Accept();
+   void on_MonochromeAuto();
+   void on_CancelMono();
    private:
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

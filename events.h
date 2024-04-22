@@ -14,7 +14,6 @@
 #include <QString>
 #include <QFileDialog>
 #include <QMessageBox>
-
 class Events
 {
 public:

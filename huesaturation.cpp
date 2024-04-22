@@ -40,24 +40,12 @@ huesaturation::~huesaturation()
 }
 
 
-void huesaturation::on_SaturationSlider_valueChanged(int value)
-{
-    ui->label_3->setText(QString::number(value));
-    emit saturationChanged(value);//передача аргумента по слоту
-}
-
-void huesaturation::on_HueSlider_valueChanged(int value)
-{
-    ui->label_4->setText(QString::number(value));
-    emit hueChanged(value);
-}
-
 
 void huesaturation::on_CancelButton_clicked()
 {
     ui->SaturationSlider->setValue(initialSaturation);
     ui->HueSlider->setValue(initialHue);
-
+    emit CancelMono();
     this->close();
 }
 
@@ -75,16 +63,26 @@ void huesaturation::on_AcceptButton_clicked()
 }
 
 
-void huesaturation::on_SaturationSlider_sliderMoved(int position)
-{
 
-
-}
 
 
 void huesaturation::on_AutoButton_clicked()
 {
-    emit autoAccepted(1);
+    emit autoAccepted();
     this->close();
+}
+
+
+void huesaturation::on_HueSlider_sliderMoved(int position)
+{
+    int saturation = ui->SaturationSlider->value();
+    emit parametersChanged(saturation, position);
+}
+
+
+void huesaturation::on_SaturationSlider_sliderMoved(int position)
+{
+    int hue = ui->HueSlider->value();
+    emit parametersChanged(position, hue);
 }
 

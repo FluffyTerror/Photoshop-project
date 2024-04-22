@@ -2,6 +2,7 @@
 
 Events::Events()
 {
+
 }
 
 Custom_View::Custom_View(QWidget *parent) : QGraphicsView(parent)
@@ -55,6 +56,7 @@ void Custom_View::dropEvent(QDropEvent *event)
 void Custom_View::loadImage(const QString &filename)
 {
     QPixmap pixmap(filename);
+
     if (!pixmap.isNull())
     {
 

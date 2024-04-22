@@ -16,8 +16,9 @@ SOURCES += \
 
 HEADERS += \
     events.h \
-    huesaturation.h \
-    mainwindow.h
+    mainwindow.h \
+    huesaturation.h
+
 
 FORMS += \
     huesaturation.ui \

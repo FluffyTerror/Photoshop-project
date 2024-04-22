@@ -16,25 +16,26 @@ public:
     ~huesaturation();
 
 private slots:
-    void on_SaturationSlider_valueChanged(int value);
     void on_AutoButton_clicked();
-    void on_HueSlider_valueChanged(int value);
-
     void on_CancelButton_clicked();
     void on_AcceptButton_clicked();
 
+
+
+    void on_HueSlider_sliderMoved(int position);
+
     void on_SaturationSlider_sliderMoved(int position);
 
-
-
 signals:
+    void parametersChanged(int saturation, int hue);
     void parametersAccepted(int saturation, int hue);
     void saturationChanged(int saturation);
     void hueChanged(int hue);
-    void autoAccepted(bool yes);
+    void autoAccepted();
+    void CancelMono();
 private:
-    int initialSaturation;
-    int initialHue;
+    int initialSaturation=0;
+    int initialHue=0;
     int saturationValue;
     int hueValue;
     Ui::huesaturation *ui;
