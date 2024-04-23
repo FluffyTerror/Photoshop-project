@@ -59,15 +59,17 @@ void Custom_View::loadImage(const QString &filename)
 
     if (!pixmap.isNull())
     {
-
+        //QImage imagerec = pixmap.toImage();
         scene->clear();
         QGraphicsPixmapItem *item = new QGraphicsPixmapItem(pixmap);
         scene->addItem(item);
         setSceneRect(item->boundingRect());
         fitInView(item, Qt::KeepAspectRatio);
+        emit ImageLoaded(filename);
     }
     else
     {
         QMessageBox::warning(nullptr, tr("Warning"), tr("Failed to load image!"));
     }
 }
+

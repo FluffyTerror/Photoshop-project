@@ -76,6 +76,7 @@ void huesaturation::on_AutoButton_clicked()
 void huesaturation::on_HueSlider_sliderMoved(int position)
 {
     int saturation = ui->SaturationSlider->value();
+    ui->label_4->setText(QString::number(position));
     emit parametersChanged(saturation, position);
 }
 
@@ -83,6 +84,7 @@ void huesaturation::on_HueSlider_sliderMoved(int position)
 void huesaturation::on_SaturationSlider_sliderMoved(int position)
 {
     int hue = ui->HueSlider->value();
+    ui->label_3->setText(QString::number(position));
     emit parametersChanged(position, hue);
 }
 

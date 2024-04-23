@@ -32,8 +32,8 @@ protected:
     void dragLeaveEvent(QDragLeaveEvent *event);
     void dragMoveEvent(QDragMoveEvent *event);
     void dropEvent(QDropEvent *event);
-
-private:
+signals:
+    void ImageLoaded(const QString &filepath);
 
 };
 

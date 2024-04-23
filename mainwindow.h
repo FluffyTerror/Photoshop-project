@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "events.h"
 #include "huesaturation.h"
 #include "qgraphicsitem.h"
 #include <QMainWindow>
@@ -22,6 +23,7 @@ public:
     QGraphicsPixmapItem * originalPixmapItem;
     huesaturation *hueSaturationForm;
     QImage *loadedImage;
+    Custom_View *customView;
 
 public slots:
    void on_Select_clicked();
@@ -30,6 +32,7 @@ public slots:
    void on_Accept();
    void on_MonochromeAuto();
    void on_CancelMono();
+   void ImageAccept(const QString &filepath);
    private:
 
     Ui::MainWindow *ui;

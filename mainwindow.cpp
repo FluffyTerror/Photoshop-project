@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "huesaturation.h"
 #include "ui_mainwindow.h"
+#include "events.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,11 +13,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(hueSaturationForm, &huesaturation::autoAccepted, this, &MainWindow::on_MonochromeAuto);
     connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
+    //НЕ РАБОТАЕТ, ЕСЛИ РАЗКОМЕНТИТЕ ПРОГА НЕ ЗАПУСТИТСЯ!!!!!!!!!!!!
+   // connect(customView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::ImageAccept(const QString &filepath){
+    QImage *image = new QImage();
+    if (image->load(filepath)) {
+        loadedImage = image;
+        Custom_View *customView = ui->graphicsView;
+        customView->loadImage(filepath);
+    }
 }
 
 void MainWindow::on_Select_clicked()
