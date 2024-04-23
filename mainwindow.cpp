@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
     //НЕ РАБОТАЕТ, ЕСЛИ РАЗКОМЕНТИТЕ ПРОГА НЕ ЗАПУСТИТСЯ!!!!!!!!!!!!
-   // connect(customView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
+    connect(ui->graphicsView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
 
 }
 
@@ -28,8 +28,6 @@ void MainWindow::ImageAccept(const QString &filepath){
     QImage *image = new QImage();
     if (image->load(filepath)) {
         loadedImage = image;
-        Custom_View *customView = ui->graphicsView;
-        customView->loadImage(filepath);
     }
 }
 
