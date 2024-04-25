@@ -5,6 +5,9 @@
 #include "huesaturation.h"
 #include "qgraphicsitem.h"
 #include <QMainWindow>
+#include "cut_image_mod.h"
+#include "color_palette.h"
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,10 +23,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QGraphicsPixmapItem * monochromePixmapItem;
+    QGraphicsPixmapItem * CutPixmapItem;
     QGraphicsPixmapItem * originalPixmapItem;
     huesaturation *hueSaturationForm;
     QImage *loadedImage;
+    QImage CopyColorImage; //создаёт копию фотографии обработанной цветом до обрезания, то есть если фотку обрезали, то можно вернуть её назад и обрезать по другому
     Custom_View *customView;
+    Cut_image_mod *cut_image;
+    color_palette *color_pal;
 
 public slots:
    void on_Select_clicked();
@@ -33,8 +40,18 @@ public slots:
    void on_MonochromeAuto();
    void on_CancelMono();
    void ImageAccept(const QString &filepath);
-   private:
+   void on_Cut_clicked();
+   void on_change_size_image(short type, int num_cropped_pixel);
+   void on_cut_button_clicked();
+   void close_cut_button_clicked();
+   void on_color_pal_clicked();
+signals:
+   void color_pallete_inf(std::vector<QColor> colors_pal);
+
+private:
 
     Ui::MainWindow *ui;
+    void crop_image(QImage cut_image_t,QRect cropRect_t);
+    void colors_sort();
 };
 #endif // MAINWINDOW_H

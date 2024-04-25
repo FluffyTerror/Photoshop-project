@@ -50,6 +50,32 @@
      <string>Монохром</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="Cut">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>0</y>
+      <width>91</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>обрезать</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="color_pal">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>0</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>палитра</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
