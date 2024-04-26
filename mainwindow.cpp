@@ -28,8 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(cut_image, &Cut_image_mod::cut_image_ok_press, this, &MainWindow::on_cut_button_clicked);
     connect(cut_image, &Cut_image_mod::cut_image_close_press, this, &MainWindow::close_cut_button_clicked);
     connect(this, &MainWindow::color_pallete_inf, color_pal, &color_palette::auto_color_pal);
-    //НЕ РАБОТАЕТ, ЕСЛИ РАЗКОМЕНТИТЕ ПРОГА НЕ ЗАПУСТИТСЯ!!!!!!!!!!!!
-    //connect(customView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
+    connect(ui->graphicsView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
 
 }
 
@@ -103,8 +102,7 @@ void MainWindow::ImageAccept(const QString &filepath){
     if (image->load(filepath)) {
         loadedImage = image;
         CopyColorImage = loadedImage->copy();
-        Custom_View *customView = ui->graphicsView;
-        customView->loadImage(filepath);
+
     }
 }
 
