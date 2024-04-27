@@ -59,7 +59,6 @@ void Custom_View::loadImage(const QString &filename)
 
     if (!pixmap.isNull())
     {
-        //QImage imagerec = pixmap.toImage();
         scene->clear();
         QGraphicsPixmapItem *item = new QGraphicsPixmapItem(pixmap);
         scene->addItem(item);

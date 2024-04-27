@@ -45,11 +45,11 @@ public slots:
    void on_cut_button_clicked();
    void close_cut_button_clicked();
    void on_color_pal_clicked();
+   void on_SaveButton_clicked();
 signals:
    void color_pallete_inf(std::vector<QColor> colors_pal);
 
 private:
-
     Ui::MainWindow *ui;
     void crop_image(QImage cut_image_t,QRect cropRect_t);
     void colors_sort();

@@ -54,7 +54,6 @@ void MainWindow::colors_sort()            //алгоритм сортировк�
             saturn = (cut_image.pixelColor(x, y).saturation() + saturn) / 2;
         }
     }
-    bool no_color = 1;
     for (int y = 0; y < cut_image.height(); y+=10) {
         for (int x = 0; x < cut_image.width();x += 10) {
             QColor pixelColor = cut_image.pixelColor(x, y);
@@ -334,5 +333,40 @@ void MainWindow::on_color_pal_clicked()
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
+}
+
+
+
+
+void MainWindow::on_SaveButton_clicked()
+{
+    if (ui->graphicsView->scene->items().isEmpty()) {
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return;
+    }
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save Image"), "C://", tr("Image Files (*.png *.jpg *.jpeg)"));
+
+    if (!filePath.isEmpty())
+    {
+        QGraphicsItem *item = ui->graphicsView->scene->items().first();
+
+        QGraphicsPixmapItem *pixmapItem = qgraphicsitem_cast<QGraphicsPixmapItem*>(item);
+
+        *loadedImage = pixmapItem->pixmap().toImage();
+        QImage *saveimage = new QImage();
+        *saveimage = loadedImage->copy();
+
+        if (!saveimage->save(filePath)) {
+            QMessageBox::warning(this, tr("Error"), tr("Failed to save image"));
+            return;
+        }
+
+        if (filePath.isEmpty()) {
+            QMessageBox::warning(this, tr("Error"), tr("No file selected"));
+            return;
+        }
+        delete saveimage;
+    }
+    qDebug() << "Image saved successfully.";
 }
 

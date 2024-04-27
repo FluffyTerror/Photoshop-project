@@ -19,11 +19,7 @@ private slots:
     void on_AutoButton_clicked();
     void on_CancelButton_clicked();
     void on_AcceptButton_clicked();
-
-
-
     void on_HueSlider_sliderMoved(int position);
-
     void on_SaturationSlider_sliderMoved(int position);
 
 signals:
