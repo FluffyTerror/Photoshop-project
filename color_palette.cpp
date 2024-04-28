@@ -17,9 +17,9 @@ color_palette::~color_palette()
 void color_palette::auto_color_pal(std::vector<QColor> colors)
 {
     std::vector<QString> colorsString;
-    ui->spinBox->setMaximum((colors.size() <= 10)? colors.size() : 10);
+    ui->spinBox->setMaximum((colors.size() <= 20)? colors.size() : 20);
     ui->spinBox->setValue(ui->spinBox->maximum());
-    for (int i = 0; i < colors.size() && i < 10; i++)
+    for (int i = 0; i < colors.size() && i < 20; i++)
     {
         QString colorsString = colors[i].name();
 
