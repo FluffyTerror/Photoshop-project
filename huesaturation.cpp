@@ -6,6 +6,7 @@ huesaturation::huesaturation(QWidget *parent) :
     ui(new Ui::huesaturation)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Monochrome");
     ui->HueSlider->setRange(0, 360);
     ui->SaturationSlider->setRange(-100,100);
 

@@ -13,9 +13,30 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">
+QPushButton {
+    color: white;               /* Установка белого цвета текста */
+    background-color: lightblue;     /* Установка синего цвета фона */
+    border-radius: 5px;         /* Установка скругленных углов */
+    border: 1px solid black;    /* Установка границы (можно настроить по вашему вкусу) */
+    padding: 8px 15px;          /* Установка внутренних отступов (можно настроить по вашему вкусу) */
+    font-family: &quot;Comic Sans MS&quot;; /* Установка шрифта Comic Sans */
+    font-size: 14px;            /* Установка размера шрифта (можно настроить по вашему вкусу) */
+}
+
+QPushButton:hover {
+    background-color: darkred;      /* Установка цвета фона при наведении */
+}
+
+QPushButton:pressed {
+    background-color: purple;   /* Установка цвета фона при нажатии */
+}
+</string>
    </property>
    <widget class="Custom_View" name="graphicsView">
     <property name="geometry">
@@ -26,15 +47,21 @@
       <height>581</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
    </widget>
    <widget class="QPushButton" name="Select">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>101</width>
-      <height>24</height>
+      <width>131</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Выбрать файл</string>
@@ -43,11 +70,14 @@
    <widget class="QPushButton" name="Monochrome">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>140</x>
       <y>0</y>
       <width>101</width>
-      <height>24</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Монохром</string>
@@ -56,36 +86,36 @@
    <widget class="QPushButton" name="Cut">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>250</x>
       <y>0</y>
       <width>91</width>
-      <height>24</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>обрезать</string>
+     <string>Обрезать</string>
     </property>
    </widget>
    <widget class="QPushButton" name="color_pal">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>350</x>
       <y>0</y>
-      <width>80</width>
-      <height>24</height>
+      <width>91</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>палитра</string>
+     <string>Палитра</string>
     </property>
    </widget>
    <widget class="QPushButton" name="SaveButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>450</x>
       <y>0</y>
-      <width>80</width>
-      <height>24</height>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">

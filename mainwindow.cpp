@@ -17,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Gojo");
+
+
     hueSaturationForm = new huesaturation();
     cut_image = new Cut_image_mod();
     color_pal = new color_palette();

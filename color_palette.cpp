@@ -7,6 +7,7 @@ color_palette::color_palette(QWidget *parent) :
     ui(new Ui::color_palette)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Palette");
 }
 
 color_palette::~color_palette()

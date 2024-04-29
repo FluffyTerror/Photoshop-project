@@ -54,7 +54,7 @@
       </size>
      </property>
      <property name="text">
-      <string>количество цветов:</string>
+      <string>Кол-во цветов:</string>
      </property>
     </widget>
    </item>

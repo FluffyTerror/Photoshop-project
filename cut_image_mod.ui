@@ -31,28 +31,28 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>обрезать по вертикали</string>
+      <string>Обрезать по вертикали</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>обрезать по горизонтали</string>
+      <string>Обрезать по горизонтали</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QPushButton" name="cut_cancellation">
      <property name="text">
-      <string>отмена</string>
+      <string>Отмена</string>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
     <widget class="QPushButton" name="cut_ok">
      <property name="text">
-      <string>обрезать</string>
+      <string>Обрезать</string>
      </property>
     </widget>
    </item>

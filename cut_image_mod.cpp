@@ -6,7 +6,9 @@ Cut_image_mod::Cut_image_mod(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Cut_image_mod)
 {
+
     ui->setupUi(this);
+    this->setWindowTitle("Cut");
     ui->XSlider->setRange(0,100);
     ui->YSlider->setRange(-100,0);
     ui->X2Slider->setRange(-100,0);
