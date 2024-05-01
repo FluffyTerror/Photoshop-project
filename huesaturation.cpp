@@ -31,7 +31,20 @@ huesaturation::huesaturation(QWidget *parent) :
                                  "    width: 18px;"
                                  "    margin: -2px 0;"
                                  "    border-radius: 3px;"
+<<<<<<< Updated upstream
                                  "}").arg(gradientColors);
+=======
+                                "}").arg(gradientColors) + QString("QSlider::handle:horizontal {"
+                                 "background: white; /* Цвет фона ползунка */"
+                                 "border: 2px solid gray; /* Цвет рамки ползунка */"
+                                 "width: 18px; /* Ширина ползунка */"
+                                     "margin-top: -2px; /* Отступ сверху */"
+                                     "margin-bottom: -2px; /* Отступ снизу */"
+                                     "border-radius: 9px; /* Радиус скругления углов */"
+                             "}"
+);
+
+>>>>>>> Stashed changes
     ui->HueSlider->setStyleSheet(styleSheet);
 }
 

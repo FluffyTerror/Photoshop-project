@@ -31,7 +31,7 @@ void color_palette::auto_color_pal(std::vector<QColor> colors)
         button->setStyleSheet("background-color: " + colorString + "; border: 2px solid black");
 
         // Установка политики размеров для кнопки
-        button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
         ui->layout_2->layout()->addWidget(button);
 

@@ -13,6 +13,43 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#Cut_image_mod { background-color: #e1f5fe; }
+QPushButton {
+    /*color: white;               /* Установка белого цвета текста */
+    background-color: lightblue;     /* Установка синего цвета фона */
+    border-radius: 5px;         /* Установка скругленных углов */
+    border: 1px solid black;    /* Установка границы (можно настроить по вашему вкусу) */
+    padding: 8px 15px;          /* Установка внутренних отступов (можно настроить по вашему вкусу) */
+    font-family: &quot;Comic Sans MS&quot;; /* Установка шрифта Comic Sans */
+    font-size: 14px;            /* Установка размера шрифта (можно настроить по вашему вкусу) */
+}
+
+QPushButton:hover {
+    background-color: darkred;      /* Установка цвета фона при наведении */
+}
+
+QPushButton:pressed {
+    background-color: purple;   /* Установка цвета фона при нажатии */
+}
+
+
+QSliderl::handle {
+   background: white; /* Цвет фона ползунка */
+    border: 2px solid gray; /* Цвет рамки ползунка */
+    width: 18px; /* Ширина ползунка */
+    margin-top: -2px; /* Отступ сверху */
+    margin-bottom: -2px; /* Отступ снизу */
+    border-radius: 9px; /* Радиус скругления углов */
+}
+
+QSlider::handle{
+    background: #C0C0C0; /* Цвет фона слайдера */
+    border: 1px solid #A9A9A9; /* Цвет рамки слайдера */
+    height: 6px; /* Высота слайдера */
+    border-radius: 3px; /* Радиус скругления углов */
+}</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="1">
     <widget class="QSlider" name="X2Slider">
