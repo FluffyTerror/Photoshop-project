@@ -17,7 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Gojo");
+    this->setWindowTitle("Paint");
+    this->setStatusBar(nullptr);
+    QIcon icon(":/icons/mainicon.png"); // Путь к вашей иконке
+    this->setWindowIcon(icon);
 
 
     hueSaturationForm = new huesaturation();

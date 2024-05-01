@@ -17,10 +17,13 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="toolTip">
+    <string/>
+   </property>
    <property name="styleSheet">
-    <string notr="true">
+    <string notr="true">QWidget#centralwidget { background-color: #e1f5fe; }
 QPushButton {
-    color: white;               /* Установка белого цвета текста */
+    /*color: white;               /* Установка белого цвета текста */
     background-color: lightblue;     /* Установка синего цвета фона */
     border-radius: 5px;         /* Установка скругленных углов */
     border: 1px solid black;    /* Установка границы (можно настроить по вашему вкусу) */
@@ -47,8 +50,11 @@ QPushButton:pressed {
       <height>581</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: white;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Select">
