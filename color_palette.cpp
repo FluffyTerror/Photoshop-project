@@ -1,7 +1,7 @@
 #include "color_palette.h"
 #include "ui_color_palette.h"
 #include <QApplication>
-
+#include <QMessageBox>
 color_palette::color_palette(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::color_palette)
@@ -18,31 +18,45 @@ color_palette::~color_palette()
 void color_palette::auto_color_pal(std::vector<QColor> colors)
 {
     std::vector<QString> colorsString;
-    ui->spinBox->setMaximum((colors.size() <= 20)? colors.size() : 20);
+    ui->spinBox->setMaximum((colors.size() <= 20) ? colors.size() : 20);
     ui->spinBox->setValue(ui->spinBox->maximum());
+
     for (int i = 0; i < colors.size() && i < 20; i++)
     {
-        QString colorsString = colors[i].name();
+        QString colorString = colors[i].name();
 
-        QLabel *label = new QLabel(this);
-        labels.push_back(label);
+        QPushButton *button = new QPushButton(this);
+        buttons.push_back(button);
 
-        label->setStyleSheet("background-color: " + colorsString + "; border: 2px solid black");
+        button->setStyleSheet("background-color: " + colorString + "; border: 2px solid black");
 
-        ui->layout_2->layout()->addWidget(label);
+        // Установка политики размеров для кнопки
+        button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+
+        ui->layout_2->layout()->addWidget(button);
+
+        // Связывание сигнала clicked с нужным слотом
+        connect(button, &QPushButton::clicked, this, [=]() {
+            handleColorButtonClicked(colors[i]);
+        });
     }
+}
+
+void color_palette::handleColorButtonClicked(const QColor &color)
+{
+    //ну тут мы получиили цвет кнопки а что дальше то делать я не знаю
 
 }
 
 void color_palette::on_spinBox_valueChanged(int arg1)
 {
-    for (QLabel* label : labels)
+    for (QPushButton* button : buttons)
     {
-        label->hide();
+        button->hide();
     }
-    for (int i = 0; i < arg1 && i < labels.size(); i++)
+    for (int i = 0; i < arg1 && i < buttons.size(); i++)
     {
-        labels[i]->show();
+        buttons[i]->show();
     }
 
 
@@ -51,13 +65,13 @@ void color_palette::on_spinBox_valueChanged(int arg1)
 void color_palette::closeEvent(QCloseEvent *event)
 {
     if (event->spontaneous()) {
-        if(!labels.empty())
+        if(!buttons.empty())
         {
-            for (QLabel* label : labels)
+            for (QPushButton* button : buttons)
             {
-                delete label;
+                delete button;
             }
-            labels.clear();
+            buttons.clear();
         }
     }
     event->accept(); // Принимаем событие закрытия окна

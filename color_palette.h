@@ -6,7 +6,7 @@
 #include <vector>
 #include<QCloseEvent>
 #include <QLabel>
-
+#include <QPushButton>
 namespace Ui {
 class color_palette;
 }
@@ -23,10 +23,11 @@ public slots:
 private slots:
     void on_spinBox_valueChanged(int arg1);
     void closeEvent(QCloseEvent *event);
+    void handleColorButtonClicked(const QColor &color);
 
 private:
     Ui::color_palette *ui;
-    std::vector<QLabel*> labels;
+    std::vector<QPushButton*> buttons;
 };
 
 #endif // COLOR_PALETTE_H
