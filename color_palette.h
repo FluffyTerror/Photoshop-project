@@ -1,6 +1,7 @@
 #ifndef COLOR_PALETTE_H
 #define COLOR_PALETTE_H
 
+#include "change_colors.h"
 #include <QWidget>
 #include <QString>
 #include <vector>
@@ -18,6 +19,7 @@ class color_palette : public QWidget
 public:
     explicit color_palette(QWidget *parent = nullptr);
     ~color_palette();
+    Change_colors *ChangeWindow;
 public slots:
     void auto_color_pal(std::vector<QColor> colors);
 private slots:

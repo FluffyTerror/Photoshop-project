@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    change_colors.cpp \
     color_palette.cpp \
     cut_image_mod.cpp \
     events.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    change_colors.h \
     color_palette.h \
     cut_image_mod.h \
     events.h \
@@ -26,6 +28,7 @@ HEADERS += \
 
 
 FORMS += \
+    change_colors.ui \
     color_palette.ui \
     cut_image_mod.ui \
     huesaturation.ui \

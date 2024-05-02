@@ -1,4 +1,5 @@
 #include "color_palette.h"
+#include "change_colors.h"
 #include "ui_color_palette.h"
 #include <QApplication>
 #include <QMessageBox>
@@ -8,6 +9,8 @@ color_palette::color_palette(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Palette");
+    ChangeWindow = new Change_colors();
+
 }
 
 color_palette::~color_palette()
@@ -44,6 +47,7 @@ void color_palette::auto_color_pal(std::vector<QColor> colors)
 
 void color_palette::handleColorButtonClicked(const QColor &color)
 {
+    ChangeWindow->show();
     //ну тут мы получиили цвет кнопки а что дальше то делать я не знаю
 
 }
