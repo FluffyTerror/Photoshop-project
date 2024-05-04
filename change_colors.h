@@ -22,6 +22,7 @@ private slots:
     void on_AcceptButton_clicked();
 
     void on_CancelButton_clicked();
+    void closeEvent(QCloseEvent *event);
 
 signals:
     void SendColor(int Colors);

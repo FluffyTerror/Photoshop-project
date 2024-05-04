@@ -10,6 +10,8 @@ color_palette::color_palette(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Palette");
     ChangeWindow = new Change_colors();
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
 
 }
 

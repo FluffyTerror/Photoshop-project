@@ -1,4 +1,5 @@
 #include "huesaturation.h"
+#include "qevent.h"
 #include "ui_huesaturation.h"
 
 huesaturation::huesaturation(QWidget *parent) :
@@ -10,7 +11,8 @@ huesaturation::huesaturation(QWidget *parent) :
     ui->HueSlider->setRange(0, 359);
     ui->SaturationSlider->setRange(-100,100);
     ui->ValueSlider->setRange(-100,100);
-
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
     initialSaturation = ui->SaturationSlider->value();
     initialHue = ui->HueSlider->value();
 
@@ -29,7 +31,7 @@ huesaturation::huesaturation(QWidget *parent) :
                                  "QSlider::handle:horizontal {"
                                  "    background-color: #ffffff;"
                                  "    border: 1px solid #5c5c5c;"
-                                 "    width: 18px;"
+                                 "    width: 30px;"
                                  "    margin: -2px 0;"
                                  "    border-radius: 3px;" "}").arg(gradientColors)
                                 + QString("QSlider::handle:horizontal {"
@@ -43,6 +45,8 @@ huesaturation::huesaturation(QWidget *parent) :
 );
 
     ui->HueSlider->setStyleSheet(styleSheet);
+
+
 }
 
 huesaturation::~huesaturation()
@@ -62,9 +66,7 @@ void huesaturation::on_CancelButton_clicked()
 
 void huesaturation::on_AcceptButton_clicked()
 {
-    // Сохраняем текущие значения насыщенности и оттенка
-    int saturation = ui->SaturationSlider->value();
-    int hue = ui->HueSlider->value();
+
 
     // Передаем значения насыщенности и оттенка через сигнал
     emit parametersAccepted(ui->HueSlider->value(),ui->SaturationSlider->value(),ui->ValueSlider->value());
@@ -104,5 +106,13 @@ void huesaturation::on_ValueSlider_sliderMoved(int position)
 {
      ui->label_9->setText(QString::number(position));
     emit parametersChanged(ui->HueSlider->value(),ui->SaturationSlider->value(),position);
+}
+
+void huesaturation::closeEvent(QCloseEvent *event)
+{
+    if (event->spontaneous()) {
+        on_CancelButton_clicked(); // Вызов соответствующего метода при закрытии окна из-за нажатия на крестик
+    }
+    event->accept(); // Принимаем событие закрытия окна
 }
 

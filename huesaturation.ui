@@ -102,10 +102,11 @@ QPushButton:pressed {
 }
 
 QSlider::groove:horizontal {
-    background: #C0C0C0; /* Цвет фона слайдера */
-    border: 1px solid #A9A9A9; /* Цвет рамки слайдера */
-    height: 6px; /* Высота слайдера */
-    border-radius: 3px; /* Радиус скругления углов */
+    border: 1px solid #999999;
+    height: 10px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                 stop:0 gray,
+                                 stop:1 red)
 }</string>
    </property>
    <property name="orientation">
@@ -115,8 +116,8 @@ QSlider::groove:horizontal {
   <widget class="QPushButton" name="AcceptButton">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>253</y>
+     <x>370</x>
+     <y>250</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -128,8 +129,8 @@ QSlider::groove:horizontal {
   <widget class="QPushButton" name="CancelButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>253</y>
+     <x>30</x>
+     <y>250</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -193,8 +194,8 @@ QSlider::groove:horizontal {
   <widget class="QPushButton" name="AutoButton">
    <property name="geometry">
     <rect>
-     <x>179</x>
-     <y>253</y>
+     <x>260</x>
+     <y>250</y>
      <width>91</width>
      <height>31</height>
     </rect>

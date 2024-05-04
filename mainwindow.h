@@ -49,6 +49,9 @@ public slots:
 signals:
    void color_pallete_inf(std::vector<QColor> colors_pal);
 
+private slots:
+    void on_revert_clicked();
+
 private:
     Ui::MainWindow *ui;
     void crop_image(QImage cut_image_t,QRect cropRect_t);

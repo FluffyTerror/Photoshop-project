@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     hueSaturationForm = new huesaturation();
     cut_image = new Cut_image_mod();
     color_pal = new color_palette();
-    connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_MonochromeParametersChanged);
+    connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_Accept);
     connect(hueSaturationForm, &huesaturation::autoAccepted, this, &MainWindow::on_MonochromeAuto);
     connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
@@ -163,6 +163,7 @@ void MainWindow::on_Monochrome_clicked()
             return;
         }
     hueSaturationForm->show();
+    on_MonochromeParametersChanged(0,0,0);
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;

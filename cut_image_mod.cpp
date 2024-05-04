@@ -13,6 +13,8 @@ Cut_image_mod::Cut_image_mod(QWidget *parent) :
     ui->YSlider->setRange(-100,0);
     ui->X2Slider->setRange(-100,0);
     ui->Y2Slider->setRange(0,100);
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
 }
 
 Cut_image_mod::~Cut_image_mod()

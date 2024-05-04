@@ -13,6 +13,7 @@ class huesaturation : public QWidget
 
 public:
     explicit huesaturation(QWidget *parent = nullptr);
+
     ~huesaturation();
 
 private slots:
@@ -23,7 +24,7 @@ private slots:
     void on_SaturationSlider_sliderMoved(int position);
 
     void on_ValueSlider_sliderMoved(int position);
-
+    void closeEvent(QCloseEvent *event);
 signals:
     void parametersChanged( int hue, int saturation,int value);
     void parametersAccepted(int hue, int saturation,int value);
@@ -31,6 +32,7 @@ signals:
     void hueChanged(int hue);
     void autoAccepted();
     void CancelMono();
+
 private:
     int initialSaturation=0;
     int initialHue=0;

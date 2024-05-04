@@ -1,4 +1,5 @@
 #include "change_colors.h"
+#include "qevent.h"
 #include "ui_change_colors.h"
 
 Change_colors::Change_colors(QWidget *parent)
@@ -34,6 +35,8 @@ Change_colors::Change_colors(QWidget *parent)
                                  "}").arg(gradientColors);
 
     ui->ColorSlider->setStyleSheet(styleSheet);
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
 }
 
 Change_colors::~Change_colors()
@@ -70,5 +73,12 @@ void Change_colors::on_CancelButton_clicked()
     ui->ColorSlider->setValue(InitialColor);
     emit CancelChange();
     this->close();
+}
+void Change_colors::closeEvent(QCloseEvent *event)
+{
+    if (event->spontaneous()) {
+        on_CancelButton_clicked(); // Вызов соответствующего метода при закрытии окна из-за нажатия на крестик
+    }
+    event->accept(); // Принимаем событие закрытия окна
 }
 
