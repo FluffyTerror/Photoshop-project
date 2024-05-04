@@ -7,8 +7,9 @@ huesaturation::huesaturation(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Monochrome");
-    ui->HueSlider->setRange(0, 360);
+    ui->HueSlider->setRange(0, 359);
     ui->SaturationSlider->setRange(-100,100);
+    ui->ValueSlider->setRange(-100,100);
 
     initialSaturation = ui->SaturationSlider->value();
     initialHue = ui->HueSlider->value();
@@ -66,7 +67,7 @@ void huesaturation::on_AcceptButton_clicked()
     int hue = ui->HueSlider->value();
 
     // Передаем значения насыщенности и оттенка через сигнал
-    emit parametersAccepted(saturation, hue);
+    emit parametersAccepted(ui->HueSlider->value(),ui->SaturationSlider->value(),ui->ValueSlider->value());
 
     this->close();
 
@@ -85,16 +86,23 @@ void huesaturation::on_AutoButton_clicked()
 
 void huesaturation::on_HueSlider_sliderMoved(int position)
 {
-    int saturation = ui->SaturationSlider->value();
     ui->label_4->setText(QString::number(position));
-    emit parametersChanged(saturation, position);
+    emit parametersChanged(position,ui->SaturationSlider->value(),ui->ValueSlider->value());
 }
 
 
 void huesaturation::on_SaturationSlider_sliderMoved(int position)
 {
-    int hue = ui->HueSlider->value();
     ui->label_3->setText(QString::number(position));
-    emit parametersChanged(position, hue);
+    emit parametersChanged(ui->HueSlider->value(),position,ui->ValueSlider->value());
+}
+
+
+
+
+void huesaturation::on_ValueSlider_sliderMoved(int position)
+{
+     ui->label_9->setText(QString::number(position));
+    emit parametersChanged(ui->HueSlider->value(),ui->SaturationSlider->value(),position);
 }
 

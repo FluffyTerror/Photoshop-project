@@ -22,9 +22,11 @@ private slots:
     void on_HueSlider_sliderMoved(int position);
     void on_SaturationSlider_sliderMoved(int position);
 
+    void on_ValueSlider_sliderMoved(int position);
+
 signals:
-    void parametersChanged(int saturation, int hue);
-    void parametersAccepted(int saturation, int hue);
+    void parametersChanged( int hue, int saturation,int value);
+    void parametersAccepted(int hue, int saturation,int value);
     void saturationChanged(int saturation);
     void hueChanged(int hue);
     void autoAccepted();

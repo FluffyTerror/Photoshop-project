@@ -172,19 +172,34 @@ void MainWindow::on_Monochrome_clicked()
 
 
 
-void MainWindow::on_MonochromeParametersChanged(int saturation, int hue)
+void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int value)
 {
     QImage monochromeImage = loadedImage->copy(); // Создаем копию оригинального изображения
-
-    // Преобразуем копию в монохромное изображение
+    int gray;
+    int result;
     for (int y = 0; y < monochromeImage.height(); ++y) {
         for (int x = 0; x < monochromeImage.width(); ++x) {
-            QColor originalColor = monochromeImage.pixelColor(x, y);
-            int gray = qGray(originalColor.rgb());
-            QColor newColor = QColor::fromHsv((hue * 359) / 360, (saturation + 100) * 255 / 200, gray);
+
+            QColor color = monochromeImage.pixelColor(x, y);
+            gray = int((qGray(color.rgb())));
+           // gray = color.;
+            // Преобразуем значения насыщенности и значения в диапазон [0, 255]
+
+
+            if(value >=0){
+                double newValue = static_cast<double>(value)/ 100;
+                result = (gray + (newValue) * (255 - gray));
+                //result = gray * newValue;
+            }
+            else{
+                double newValue = static_cast<double>(-value)/ 100;
+                result = (gray - (newValue) * (gray));
+            }
+            QColor newColor = QColor::fromHsv(hue,  (saturation + 100) * 255 / 200, result );
             monochromeImage.setPixelColor(x, y, newColor);
         }
     }
+
     CopyColorImage = monochromeImage.copy();
     QImage cut_image = CopyColorImage.copy();
     int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;

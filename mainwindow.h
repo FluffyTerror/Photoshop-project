@@ -35,7 +35,7 @@ public:
 public slots:
    void on_Select_clicked();
    void on_Monochrome_clicked();
-   void on_MonochromeParametersChanged(int saturation, int hue);
+   void on_MonochromeParametersChanged(int hue,int saturation,int value );
    void on_Accept();
    void on_MonochromeAuto();
    void on_CancelMono();
