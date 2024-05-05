@@ -110,9 +110,7 @@ MainWindow::~MainWindow()
 void MainWindow::ImageAccept(const QString &filepath){
     QImage *image = new QImage();
     if (image->load(filepath)) {
-        loadedImage = image;
-        CopyColorImage = loadedImage->copy();
-        GlobalImageCopy = loadedImage->copy();
+        CopyColorImage = image->copy();
 
     }
 }
@@ -142,7 +140,7 @@ void MainWindow::on_Accept(){
 
     QGraphicsPixmapItem *pixmapItem = qgraphicsitem_cast<QGraphicsPixmapItem*>(item);
 
-    *loadedImage = pixmapItem->pixmap().toImage();
+    CopyColorImage = pixmapItem->pixmap().toImage();
 }
 
 
@@ -206,10 +204,10 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
         }
     }
 
-    CopyColorImage = monochromeImage.copy();
-    QImage cut_image = CopyColorImage.copy();
-    int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+
+
+    int w = CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 > CopyColorImage.width())? CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h = CopyColorImage.height() - ((cropped.num_cropped_pixel_y2 > CopyColorImage.height())? CopyColorImage.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
     monochromeImage = monochromeImage.copy(cropRect);
     monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
@@ -439,9 +437,9 @@ void MainWindow::on_SaveButton_clicked()
 
         QGraphicsPixmapItem *pixmapItem = qgraphicsitem_cast<QGraphicsPixmapItem*>(item);
 
-        *loadedImage = pixmapItem->pixmap().toImage();
+        CopyColorImage = pixmapItem->pixmap().toImage();
         QImage *saveimage = new QImage();
-        *saveimage = loadedImage->copy();
+        *saveimage =  CopyColorImage;
 
         if (!saveimage->save(filePath)) {
             QMessageBox::warning(this, tr("Error"), tr("Failed to save image"));
