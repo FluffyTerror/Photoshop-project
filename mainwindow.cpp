@@ -21,8 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStatusBar(nullptr);
     QIcon icon(":/icons/mainicon.png"); // Путь к вашей иконке
     this->setWindowIcon(icon);
-
-
     hueSaturationForm = new huesaturation();
     cut_image = new Cut_image_mod();
     color_pal = new color_palette();
@@ -123,8 +121,7 @@ void MainWindow::on_Select_clicked()
         // Создать объект QImage динамически
         QImage *image = new QImage();
         if (image->load(filepath)) {
-            loadedImage = image;
-            CopyColorImage = loadedImage->copy();
+            CopyColorImage = *image;
             // Загрузить изображение в Custom_View для отображения
             Custom_View *customView = ui->graphicsView;
             customView->loadImage(filepath);
@@ -150,7 +147,7 @@ void MainWindow::on_CancelMono(){
     int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
     int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
-    QPixmap pixmap = QPixmap::fromImage(loadedImage->copy(cropRect));
+    QPixmap pixmap = QPixmap::fromImage(CopyColorImage.copy(cropRect));
 
     // Создание QGraphicsPixmapItem с помощью созданного QPixmap
     QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
@@ -384,20 +381,20 @@ void MainWindow::on_change_size_image(short type, int position)
 
 void MainWindow::on_cut_button_clicked()
 {
-    QImage cut_image = CopyColorImage;
-    int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+
+    int w =  CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 >  CopyColorImage.width())?  CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h =  CopyColorImage.height() - ((cropped.num_cropped_pixel_y2 >  CopyColorImage.height())?  CopyColorImage.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
-    crop_image(cut_image, cropRect);
+    crop_image( CopyColorImage, cropRect);
 }
 
 void MainWindow::close_cut_button_clicked()
 {
-    QImage cut_image = CopyColorImage;
-    int w = cut_image.width() - ((old_cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : old_cropped.num_cropped_pixel_x2) - old_cropped.num_cropped_pixel_x;
-    int h = cut_image.height() - ((old_cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : old_cropped.num_cropped_pixel_y2) - old_cropped.num_cropped_pixel_y;
+
+    int w =  CopyColorImage.width() - ((old_cropped.num_cropped_pixel_x2 >  CopyColorImage.width())?  CopyColorImage.width() : old_cropped.num_cropped_pixel_x2) - old_cropped.num_cropped_pixel_x;
+    int h =  CopyColorImage.height() - ((old_cropped.num_cropped_pixel_y2 >  CopyColorImage.height())?  CopyColorImage.height() : old_cropped.num_cropped_pixel_y2) - old_cropped.num_cropped_pixel_y;
     QRect cropRect(old_cropped.num_cropped_pixel_x, old_cropped.num_cropped_pixel_y, w, h);
-    crop_image(cut_image, cropRect);
+    crop_image( CopyColorImage, cropRect);
     cropped = old_cropped;
 
 }
@@ -414,10 +411,7 @@ void MainWindow::on_color_pal_clicked()
     firstCopyImage = 1;
     colors_sort();
     color_pal->show();
-    if (ui->graphicsView->scene->items().isEmpty()) {
-        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
-        return;
-    }
+
 }
 
 

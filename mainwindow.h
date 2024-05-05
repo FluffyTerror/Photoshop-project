@@ -1,4 +1,3 @@
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -10,7 +9,7 @@
 #include "color_palette.h"
 #include <vector>
 
-    QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
