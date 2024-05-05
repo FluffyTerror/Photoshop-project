@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/backgrounds">
+        <file>images/blue.jpg</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>mainicon.png</file>
+    </qresource>
+</RCC>

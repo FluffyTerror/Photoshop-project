@@ -24,10 +24,11 @@ public:
     ~MainWindow();
     QGraphicsPixmapItem * monochromePixmapItem;
     QGraphicsPixmapItem * CutPixmapItem;
+    QGraphicsPixmapItem * PalettePixmapItem;
     QGraphicsPixmapItem * originalPixmapItem;
     huesaturation *hueSaturationForm;
     QImage *loadedImage;
-    QImage CopyColorImage; //создаёт копию фотографии обработанной цветом до обрезания, то есть если фотку обрезали, то можно вернуть её назад и обрезать по другому
+    QImage CopyColorImage, CopyColorImageT, GlobalImageCopy;
     Custom_View *customView;
     Cut_image_mod *cut_image;
     color_palette *color_pal;
@@ -35,7 +36,6 @@ public:
 public slots:
    void on_Select_clicked();
    void on_Monochrome_clicked();
-   void on_MonochromeParametersChanged(int hue,int saturation,int value );
    void on_Accept();
    void on_MonochromeAuto();
    void on_CancelMono();
@@ -46,11 +46,14 @@ public slots:
    void close_cut_button_clicked();
    void on_color_pal_clicked();
    void on_SaveButton_clicked();
+   void hueChanged(int hue);
+   void saturationChanged(int saturation);
+   void changeColorPallete(QColor NewColor, QColor OldColor);
+   void paletteOkClick();
+   void paletteCloseClick();
 signals:
    void color_pallete_inf(std::vector<QColor> colors_pal);
-
-private slots:
-    void on_revert_clicked();
+   void color_pallete_allow_adding_a_new_color(QColor);
 
 private:
     Ui::MainWindow *ui;
