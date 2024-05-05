@@ -206,9 +206,10 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
         }
     }
 
-
-    int w =CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 > CopyColorImage.width())? CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = CopyColorImage.height() - ((cropped.num_cropped_pixel_y2 > CopyColorImage.height())? CopyColorImage.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+    CopyColorImage = monochromeImage.copy();
+    QImage cut_image = CopyColorImage.copy();
+    int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
     monochromeImage = monochromeImage.copy(cropRect);
     monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
