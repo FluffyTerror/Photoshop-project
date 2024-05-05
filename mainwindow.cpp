@@ -147,7 +147,6 @@ void MainWindow::on_Accept(){
 
 
 void MainWindow::on_CancelMono(){
-    CopyColorImage = loadedImage->copy();
     // Преобразование QImage в QPixmap
     QImage cut_image = CopyColorImage.copy();
     int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
@@ -181,7 +180,7 @@ void MainWindow::on_Monochrome_clicked()
 
 void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int value)
 {
-    QImage monochromeImage = loadedImage->copy(); // Создаем копию оригинального изображения
+    QImage monochromeImage = CopyColorImage; // Создаем копию оригинального изображения
     int gray;
     int result;
     for (int y = 0; y < monochromeImage.height(); ++y) {
@@ -207,10 +206,9 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
         }
     }
 
-    CopyColorImage = monochromeImage.copy();
-    QImage cut_image = CopyColorImage.copy();
-    int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+
+    int w =CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 > CopyColorImage.width())? CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h = CopyColorImage.height() - ((cropped.num_cropped_pixel_y2 > CopyColorImage.height())? CopyColorImage.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
     monochromeImage = monochromeImage.copy(cropRect);
     monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
@@ -226,10 +224,9 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
 {
     if (firstCopyImage)
     {
-        CopyColorImage = CopyColorImage.copy();
         firstCopyImage = 0;
     }
-    QImage PaletteImage = CopyColorImage.copy();
+    QImage PaletteImage = CopyColorImage;
     for (int y = 0; y < PaletteImage.height(); y++) {
         for (int x = 0; x < PaletteImage.width();x++) {
             QColor originalColor = PaletteImage.pixelColor(x, y);
@@ -261,7 +258,7 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
             }
         }
     }
-    CopyColorImage = PaletteImage.copy();
+    CopyColorImage = PaletteImage;
     PalettePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(PaletteImage));
     delete ui->graphicsView->scene->items().value(0);
     ui->graphicsView->scene->addItem(PalettePixmapItem);
@@ -288,7 +285,7 @@ void MainWindow::on_MonochromeAuto(){
 
 
 
-    QImage monochromeImage = loadedImage->copy(); // Создаем копию оригинального изображения
+    QImage monochromeImage = CopyColorImage; // Создаем копию оригинального изображения
 
     // Преобразуем копию в монохромное изображение
     for (int y = 0; y < monochromeImage.height(); ++y) {
@@ -298,10 +295,9 @@ void MainWindow::on_MonochromeAuto(){
             monochromeImage.setPixelColor(x, y, QColor(gray, gray, gray));
         }
     }
-    CopyColorImage = monochromeImage.copy();
-    QImage cut_image = CopyColorImage.copy();
-    int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+
+    int w = CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 > CopyColorImage.width())? CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h = CopyColorImage.height() - ((cropped.num_cropped_pixel_y2 > CopyColorImage.height())? CopyColorImage.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
     monochromeImage = monochromeImage.copy(cropRect);
     monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
@@ -329,7 +325,7 @@ void MainWindow::on_Cut_clicked()
 
 void MainWindow::on_change_size_image(short type, int position)
 {
-    QImage cut_image = CopyColorImage.copy();
+    QImage cut_image = CopyColorImage;
     switch(type)
     {
     case x_fun_right:
@@ -389,7 +385,7 @@ void MainWindow::on_change_size_image(short type, int position)
 
 void MainWindow::on_cut_button_clicked()
 {
-    QImage cut_image = CopyColorImage.copy();
+    QImage cut_image = CopyColorImage;
     int w = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
     int h = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
@@ -398,7 +394,7 @@ void MainWindow::on_cut_button_clicked()
 
 void MainWindow::close_cut_button_clicked()
 {
-    QImage cut_image = CopyColorImage.copy();
+    QImage cut_image = CopyColorImage;
     int w = cut_image.width() - ((old_cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : old_cropped.num_cropped_pixel_x2) - old_cropped.num_cropped_pixel_x;
     int h = cut_image.height() - ((old_cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : old_cropped.num_cropped_pixel_y2) - old_cropped.num_cropped_pixel_y;
     QRect cropRect(old_cropped.num_cropped_pixel_x, old_cropped.num_cropped_pixel_y, w, h);
