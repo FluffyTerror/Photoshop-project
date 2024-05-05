@@ -226,10 +226,10 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
 {
     if (firstCopyImage)
     {
-        CopyColorImage = CopyColorImage.copy();
+        CopyColorImageT = CopyColorImage.copy();
         firstCopyImage = 0;
     }
-    QImage PaletteImage = CopyColorImage.copy();
+    QImage PaletteImage = CopyColorImageT.copy();
     for (int y = 0; y < PaletteImage.height(); y++) {
         for (int x = 0; x < PaletteImage.width();x++) {
             QColor originalColor = PaletteImage.pixelColor(x, y);
@@ -261,7 +261,7 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
             }
         }
     }
-    CopyColorImage = PaletteImage.copy();
+    CopyColorImageT = PaletteImage.copy();
     PalettePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(PaletteImage));
     delete ui->graphicsView->scene->items().value(0);
     ui->graphicsView->scene->addItem(PalettePixmapItem);
@@ -272,6 +272,7 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
 
 void MainWindow::paletteOkClick()
 {
+    CopyColorImage = CopyColorImageT.copy();
     firstCopyImage = 1;
 }
 
