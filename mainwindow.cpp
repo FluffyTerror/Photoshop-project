@@ -5,12 +5,12 @@
 #include "cut_image_mod.h"
 #include "type_function.h"
 
-struct cut_struct
+    struct cut_struct
 {
     int  num_cropped_pixel_x = 0, num_cropped_pixel_y = 0, num_cropped_pixel_x2 = 0, num_cropped_pixel_y2 = 0;
 }cropped;
 cut_struct old_cropped;
-
+bool firstCopyImage = 1;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,15 +26,21 @@ MainWindow::MainWindow(QWidget *parent) :
     hueSaturationForm = new huesaturation();
     cut_image = new Cut_image_mod();
     color_pal = new color_palette();
-    connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_Accept);
+    // connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::autoAccepted, this, &MainWindow::on_MonochromeAuto);
-    connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
+    //connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
     connect(cut_image, &Cut_image_mod::change_slider_position, this, &MainWindow::on_change_size_image);
     connect(cut_image, &Cut_image_mod::cut_image_ok_press, this, &MainWindow::on_cut_button_clicked);
     connect(cut_image, &Cut_image_mod::cut_image_close_press, this, &MainWindow::close_cut_button_clicked);
     connect(this, &MainWindow::color_pallete_inf, color_pal, &color_palette::auto_color_pal);
+    connect(this, &MainWindow::color_pallete_allow_adding_a_new_color, color_pal, &color_palette::slots_color_pallete_allow_adding_a_new_color);
     connect(ui->graphicsView, &Custom_View::ImageLoaded, this, &MainWindow::ImageAccept);
+    connect(hueSaturationForm, &huesaturation::parametersAccepted, this, &MainWindow::on_Accept);
+    connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
+    connect(color_pal, &color_palette::changeColorPaletteImage, this, &MainWindow::changeColorPallete);
+    connect(color_pal, &color_palette::paletteOkClick, this, &MainWindow::paletteOkClick);
+    connect(color_pal, &color_palette::paletteCloseClick, this, &MainWindow::paletteCloseClick);
 
 }
 
@@ -48,8 +54,8 @@ void MainWindow::crop_image (QImage cut_image_t, QRect cropRect_t)
     ui->graphicsView->fitInView(CutPixmapItem, Qt::KeepAspectRatio);
 }
 
-void MainWindow::colors_sort()            //алгоритм сортировки цветов, но он полное говно, так как если цвет отличается на 1 значение, типо не 202 4 13, а 203 4 13,
-    // то это уже два разных цвета, да и просто он как-то странно сортирует, мейби я насрал в функции sort, ну не я, а чат джпт
+
+void MainWindow::colors_sort()
 {
     QImage cut_image = CopyColorImage.copy();
     std::vector<QColor> colors;
@@ -98,7 +104,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete hueSaturationForm;
     delete cut_image;
-
 }
 
 
@@ -107,6 +112,7 @@ void MainWindow::ImageAccept(const QString &filepath){
     if (image->load(filepath)) {
         loadedImage = image;
         CopyColorImage = loadedImage->copy();
+        GlobalImageCopy = loadedImage->copy();
 
     }
 }
@@ -138,6 +144,8 @@ void MainWindow::on_Accept(){
 
     *loadedImage = pixmapItem->pixmap().toImage();
 }
+
+
 void MainWindow::on_CancelMono(){
     CopyColorImage = loadedImage->copy();
     // Преобразование QImage в QPixmap
@@ -159,9 +167,9 @@ void MainWindow::on_Monochrome_clicked()
 {
 
     if (ui->graphicsView->scene->items().isEmpty()) {
-            QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
-            return;
-        }
+        QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
+        return;
+    }
     hueSaturationForm->show();
     on_MonochromeParametersChanged(0,0,0);
     if (ui->graphicsView->scene->items().isEmpty()) {
@@ -170,8 +178,6 @@ void MainWindow::on_Monochrome_clicked()
     }
 
 }
-
-
 
 void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int value)
 {
@@ -183,7 +189,7 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
 
             QColor color = monochromeImage.pixelColor(x, y);
             gray = int((qGray(color.rgb())));
-           // gray = color.;
+            // gray = color.;
             // Преобразуем значения насыщенности и значения в диапазон [0, 255]
 
 
@@ -216,6 +222,68 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
 }
 
 
+void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
+{
+    if (firstCopyImage)
+    {
+        CopyColorImageT = CopyColorImage.copy();
+        firstCopyImage = 0;
+    }
+    QImage PaletteImage = CopyColorImageT.copy();
+    for (int y = 0; y < PaletteImage.height(); y++) {
+        for (int x = 0; x < PaletteImage.width();x++) {
+            QColor originalColor = PaletteImage.pixelColor(x, y);
+            int val = 0, sat = 0;
+            if(originalColor.red() - 40 <= OldColor.red() && originalColor.red() + 40 >= OldColor.red() &&
+                originalColor.green() - 40 <= OldColor.green() && originalColor.green() + 40 >= OldColor.green() &&
+                originalColor.blue() - 40 <= OldColor.blue() && originalColor.blue() + 40 >= OldColor.blue())
+            {
+                if (originalColor.value() < 10)
+                {
+                    sat = 250;
+                    val = 30;
+                }
+                else
+                {
+                    if (originalColor.value() > 180)
+                    {
+                        sat = (originalColor.saturation() > 80)? originalColor.saturation() : 80;
+                        val = 180;
+                    }
+                    else
+                    {
+                        sat = (originalColor.saturation() > 80)? originalColor.saturation() : 80;
+                        val = (originalColor.value() < 200)? originalColor.value(): 200;
+                    }
+                }
+                NewColor = QColor::fromHsv(NewColor.hue(), sat , val);
+                PaletteImage.setPixelColor(x, y, NewColor);
+            }
+        }
+    }
+    CopyColorImageT = PaletteImage.copy();
+    PalettePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(PaletteImage));
+    delete ui->graphicsView->scene->items().value(0);
+    ui->graphicsView->scene->addItem(PalettePixmapItem);
+    ui->graphicsView->setSceneRect(PalettePixmapItem->boundingRect());
+    ui->graphicsView->fitInView(PalettePixmapItem, Qt::KeepAspectRatio);
+    color_pallete_allow_adding_a_new_color(NewColor);
+}
+
+void MainWindow::paletteOkClick()
+{
+    CopyColorImage = CopyColorImageT.copy();
+    firstCopyImage = 1;
+}
+
+void MainWindow::paletteCloseClick()
+{
+    PalettePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(CopyColorImage));
+    delete ui->graphicsView->scene->items().value(0);
+    ui->graphicsView->scene->addItem(PalettePixmapItem);
+    ui->graphicsView->setSceneRect(PalettePixmapItem->boundingRect());
+    ui->graphicsView->fitInView(PalettePixmapItem, Qt::KeepAspectRatio);
+}
 
 void MainWindow::on_MonochromeAuto(){
 
@@ -349,6 +417,7 @@ void MainWindow::on_color_pal_clicked()
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
+    firstCopyImage = 1;
     colors_sort();
     color_pal->show();
     if (ui->graphicsView->scene->items().isEmpty()) {
@@ -391,4 +460,3 @@ void MainWindow::on_SaveButton_clicked()
     }
     qDebug() << "Image saved successfully.";
 }
-
