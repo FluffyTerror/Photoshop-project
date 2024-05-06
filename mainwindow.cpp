@@ -167,12 +167,13 @@ void MainWindow::on_CancelMono(){
 
 void MainWindow::on_Monochrome_clicked()
 {
-    this->setEnabled(false);
+    //
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
     hueSaturationForm->show();
+    this->setEnabled(false);
     on_MonochromeParametersChanged(0,0,0);
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
@@ -283,7 +284,7 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
     ui->graphicsView->scene->addItem(PalettePixmapItem);
     ui->graphicsView->setSceneRect(PalettePixmapItem->boundingRect());
     ui->graphicsView->fitInView(PalettePixmapItem, Qt::KeepAspectRatio);
-    color_pallete_allow_adding_a_new_color(NewColor);
+    emit color_pallete_allow_adding_a_new_color(NewColor);
 }
 
 void MainWindow::paletteOkClick()

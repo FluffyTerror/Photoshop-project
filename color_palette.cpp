@@ -64,7 +64,7 @@ void color_palette::change_color(int pos)
         newColor = QColor::fromHsv((pos * 359) / 360, 200, 200);
         buttons[global_num_button]->setStyleSheet(("QPushButton {background-color: " + colorString + "; border: 2px solid black;}"
                                                    "QPushButton:hover { border: 3px solid red }"));
-        changeColorPaletteImage(newColor, QColorsPalette[global_num_button]);
+        emit changeColorPaletteImage(newColor, QColorsPalette[global_num_button]);
 }
 
 void color_palette::slots_color_pallete_allow_adding_a_new_color(QColor NewColorPal)
