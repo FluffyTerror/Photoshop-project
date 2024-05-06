@@ -15,7 +15,17 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#color_palette { background-color: #e1f5fe; }
-QPushButton {
+
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="layout_2"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QPushButton" name="close_button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
     /*color: white;               /* Установка белого цвета текста */
     background-color: lightblue;     /* Установка синего цвета фона */
     border-radius: 5px;         /* Установка скругленных углов */
@@ -31,15 +41,8 @@ QPushButton:hover {
 
 QPushButton:pressed {
     background-color: purple;   /* Установка цвета фона при нажатии */
-}
-</string>
-  </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="layout_2"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="close_button">
+}</string>
+     </property>
      <property name="text">
       <string>отмена</string>
      </property>
@@ -65,6 +68,25 @@ QPushButton:pressed {
    </item>
    <item row="4" column="2">
     <widget class="QPushButton" name="ok_button">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    /*color: white;               /* Установка белого цвета текста */
+    background-color: lightblue;     /* Установка синего цвета фона */
+    border-radius: 5px;         /* Установка скругленных углов */
+    border: 1px solid black;    /* Установка границы (можно настроить по вашему вкусу) */
+    padding: 8px 15px;          /* Установка внутренних отступов (можно настроить по вашему вкусу) */
+    font-family: &quot;Comic Sans MS&quot;; /* Установка шрифта Comic Sans */
+    font-size: 14px;            /* Установка размера шрифта (можно настроить по вашему вкусу) */
+}
+
+QPushButton:hover {
+    background-color: darkred;      /* Установка цвета фона при наведении */
+}
+
+QPushButton:pressed {
+    background-color: purple;   /* Установка цвета фона при нажатии */
+}</string>
+     </property>
      <property name="text">
       <string>ок</string>
      </property>

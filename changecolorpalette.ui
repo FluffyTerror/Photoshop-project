@@ -27,7 +27,19 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#changeColorPalette { background-color: #e1f5fe; }
-QPushButton {
+</string>
+  </property>
+  <widget class="QPushButton" name="close_button">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>54</y>
+     <width>80</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
     /*color: white;               /* Установка белого цвета текста */
     background-color: lightblue;     /* Установка синего цвета фона */
     border-radius: 5px;         /* Установка скругленных углов */
@@ -43,17 +55,7 @@ QPushButton:hover {
 
 QPushButton:pressed {
     background-color: purple;   /* Установка цвета фона при нажатии */
-}
-</string>
-  </property>
-  <widget class="QPushButton" name="close_button">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>54</y>
-     <width>80</width>
-     <height>41</height>
-    </rect>
+}</string>
    </property>
    <property name="text">
     <string>отмена</string>
@@ -67,6 +69,25 @@ QPushButton:pressed {
      <width>80</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    /*color: white;               /* Установка белого цвета текста */
+    background-color: lightblue;     /* Установка синего цвета фона */
+    border-radius: 5px;         /* Установка скругленных углов */
+    border: 1px solid black;    /* Установка границы (можно настроить по вашему вкусу) */
+    padding: 8px 15px;          /* Установка внутренних отступов (можно настроить по вашему вкусу) */
+    font-family: &quot;Comic Sans MS&quot;; /* Установка шрифта Comic Sans */
+    font-size: 14px;            /* Установка размера шрифта (можно настроить по вашему вкусу) */
+}
+
+QPushButton:hover {
+    background-color: darkred;      /* Установка цвета фона при наведении */
+}
+
+QPushButton:pressed {
+    background-color: purple;   /* Установка цвета фона при нажатии */
+}</string>
    </property>
    <property name="text">
     <string>ok</string>
