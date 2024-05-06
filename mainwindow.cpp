@@ -35,8 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(hueSaturationForm, &huesaturation::autoAccepted, this, &MainWindow::on_MonochromeAuto);
     //connect(hueSaturationForm, &huesaturation::parametersChanged, this, &MainWindow::on_MonochromeParametersChanged);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
-    connect(cut_image, &Cut_image_mod::change_slider_position, this, &MainWindow::on_change_size_image);
-    connect(cut_image, &Cut_image_mod::cut_image_ok_press, this, &MainWindow::on_cut_button_clicked);
+    connect(cut_image, &Cut_image_mod::change_slider_position, this, &MainWindow::change_size_image);
+    connect(cut_image, &Cut_image_mod::cut_image_ok_press, this, &MainWindow::cut_button_clicked);
     connect(cut_image, &Cut_image_mod::cut_image_close_press, this, &MainWindow::close_cut_button_clicked);
     connect(this, &MainWindow::color_pallete_inf, color_pal, &color_palette::auto_color_pal);
     connect(this, &MainWindow::color_pallete_allow_adding_a_new_color, color_pal, &color_palette::slots_color_pallete_allow_adding_a_new_color);
@@ -327,14 +327,14 @@ void MainWindow::on_Cut_clicked()
     this->setEnabled(false);
     old_cropped = cropped;
     cut_image->show();
-    on_change_size_image(0, 0);
+    change_size_image(0, 0);
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
 }
 
-void MainWindow::on_change_size_image(short type, int position)
+void MainWindow::change_size_image(short type, int position)
 {
     QImage cut_image = CopyColorImage.copy();
     switch(type)
@@ -394,7 +394,7 @@ void MainWindow::on_change_size_image(short type, int position)
     ui->graphicsView->fitInView(CutPixmapItem, Qt::KeepAspectRatio);
 }
 
-void MainWindow::on_cut_button_clicked()
+void MainWindow::cut_button_clicked()
 {
     this->setEnabled(true);
     int w =  CopyColorImage.width() - ((cropped.num_cropped_pixel_x2 >  CopyColorImage.width())?  CopyColorImage.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;

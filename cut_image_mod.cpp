@@ -74,3 +74,5 @@ void Cut_image_mod::closeEvent(QCloseEvent *event)
     }
     event->accept(); // Принимаем событие закрытия окна
 }
+
+

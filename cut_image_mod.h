@@ -27,6 +27,7 @@ private slots:
 
     void closeEvent(QCloseEvent *event);
 
+
 private:
     Ui::Cut_image_mod *ui;
     int x = 0, y = 0, x2 = 0, y2 = 0; //мне было лень придумывать адекватные названия, по этому поясняю: х - обрезает слева, х2 - справа, у - сверху, у2 - снизу

@@ -7,6 +7,8 @@
     ui(new Ui::changeColorPalette)
 {
     ui->setupUi(this);
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
     this->setWindowTitle("ChangeColor");
     ui->colorSlide->setRange(0, 360);
 

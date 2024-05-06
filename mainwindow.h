@@ -41,8 +41,8 @@ public slots:
     void on_CancelMono();
     void ImageAccept(const QString &filepath);
     void on_Cut_clicked();
-    void on_change_size_image(short type, int num_cropped_pixel);
-    void on_cut_button_clicked();
+    void change_size_image(short type, int num_cropped_pixel);
+    void cut_button_clicked();
     void close_cut_button_clicked();
     void on_color_pal_clicked();
     void on_SaveButton_clicked();

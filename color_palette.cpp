@@ -8,6 +8,8 @@ color_palette::color_palette(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Palette");
+    QIcon icon(":/icons/mainicon.png");
+    this->setWindowIcon(icon);
 }
 
 int global_num_button;
