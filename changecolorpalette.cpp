@@ -59,3 +59,9 @@ void changeColorPalette::on_close_button_clicked()
     this->close();
 }
 
+
+void changeColorPalette::on_colorSlide_sliderMoved(int position)
+{
+    emit change_color(position);
+}
+

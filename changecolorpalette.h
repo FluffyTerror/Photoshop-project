@@ -21,6 +21,8 @@ private slots:
 
     void on_close_button_clicked();
 
+    void on_colorSlide_sliderMoved(int position);
+
 signals:
     void change_color(int);
 
