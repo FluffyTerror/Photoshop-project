@@ -28,7 +28,7 @@ public:
     QGraphicsPixmapItem * originalPixmapItem;
     huesaturation *hueSaturationForm;
     QImage *loadedImage;
-    QImage CopyColorImage, CopyColorImageT, GlobalImageCopy;
+    QImage CopyColorImage, CopyColorImageT;
     Custom_View *customView;
     Cut_image_mod *cut_image;
     color_palette *color_pal;

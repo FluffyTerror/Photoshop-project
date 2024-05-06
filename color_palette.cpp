@@ -95,14 +95,7 @@ void color_palette::on_spinBox_valueChanged(int arg1)
 void color_palette::closeEvent(QCloseEvent *event)
 {
     if (event->spontaneous()) {
-        if(!buttons.empty())
-        {
-            for (QPushButton* button : buttons)
-            {
-                delete button;
-            }
-            buttons.clear();
-        }
+        on_close_button_clicked();
     }
     event->accept(); // Принимаем событие закрытия окна
 }

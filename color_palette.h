@@ -32,6 +32,7 @@ private slots:
 
     void on_close_button_clicked();
 
+
 private:
     Ui::color_palette *ui;
     std::vector<QPushButton*> buttons;
