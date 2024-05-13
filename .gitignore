@@ -8,4 +8,17 @@ Uchebka_Photoshop.pro.user.141cce0
 *.ff08bcc
 *.user
 .qmake
+*.qmake
 /.qtc_clangd
+/debug
+release/object_script.Uchebka_Photoshop.Release
+.qmake.stash
+Makefile
+Makefile.Debug
+Makefile.Release
+ui_changecolorpalette.h
+ui_color_palette.h
+ui_cut_image_mod.h
+ui_huesaturation.h
+ui_mainwindow.h
+Users79818AppDataLocalTemptmp9z5_6v8c
