@@ -77,7 +77,7 @@ void color_palette::change_color(int pos)
     newColor = QColor::fromHsv((pos * 359) / 360, 200, 200);
     buttons[global_num_button]->setStyleSheet(("QPushButton {background-color: " + colorString + "; border: 2px solid black;}"
                                                                                                  "QPushButton:hover { border: 3px solid red }"));
-    emit changeColorPaletteImage(newColor, QColorsPalette[global_num_button]);
+    emit changeColorPaletteImage(newColor);
 }
 
 // Слот для обновления цвета в палитре
@@ -91,6 +91,7 @@ void color_palette::handleColorButtonClicked(int num)
 {
     global_num_button = num;
     ChangeColor_Main->show();
+    emit color_button_clicked(QColorsPalette[global_num_button]);
 }
 
 // Обработчик изменения значения spinBox

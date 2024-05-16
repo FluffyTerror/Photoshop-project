@@ -40,9 +40,10 @@ private:
     std::vector<QColor> QColorsPalette;
     void clearPalette();
 signals:
-    void changeColorPaletteImage(QColor NewColor, QColor OldColor);
+    void changeColorPaletteImage(QColor NewColor);
     void paletteOkClick();
     void paletteCloseClick();
+    void color_button_clicked(QColor OldColor);
 };
 
 #endif // COLOR_PALETTE_H

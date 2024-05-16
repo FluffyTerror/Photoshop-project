@@ -12,7 +12,7 @@
 cut_struct old_cropped;
 
 
-
+// функция, которая на основе структуры cut_struct обрезает фотографию и возвращает обрезанную ферсию
 QRect CropImage_for_scene(QImage Image)
 {
     int w = Image.width() - ((cropped.num_cropped_pixel_x2 > Image.width())? Image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(color_pal, &color_palette::changeColorPaletteImage, this, &MainWindow::changeColorPallete);
     connect(color_pal, &color_palette::paletteOkClick, this, &MainWindow::paletteOkClick);
     connect(color_pal, &color_palette::paletteCloseClick, this, &MainWindow::paletteCloseClick);
-
+    connect(color_pal, &color_palette::color_button_clicked, this, &MainWindow::clicked_color_button_in_pallete);
 }
 
 //слот, обрабатывающий нажатие клавиши загрузки изображения
@@ -334,6 +334,7 @@ void MainWindow::on_color_pal_clicked()
     }
     CopyColorImageT = CopyColorImage.copy();
     this->setEnabled(false);
+
     //Запуск алгоритма вычисления палитры и отображения окна
     colors_sort();
     color_pal->show();
@@ -410,8 +411,15 @@ void MainWindow::colors_sort()
     emit color_pallete_inf(colors);
 }
 
-
-
+// метод класса для заполнения внутреней структуры класса mainwindow
+MainWindow::coord_color MainWindow::make_coord_color(int x, int y, QColor color)
+{
+    coord_color Tcolor;
+    Tcolor.color = color;
+    Tcolor.x = x;
+    Tcolor.y = y;
+    return Tcolor;
+}
 
 //Обработка кнопки ОК в окне палитры
 void MainWindow::paletteOkClick()
@@ -433,21 +441,15 @@ void MainWindow::paletteCloseClick()
     this->setEnabled(true);
 }
 
-
-// Алгоритм изменения палитры изображения
-void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
+// метод, который заносит в vector координаты пикселя, цвет которого нужно поменять
+void MainWindow::clicked_color_button_in_pallete(QColor OldColor)
 {
-    // Создаем копию изображения палитры
     QImage PaletteImage = CopyColorImageT.copy();
-
-    // Проходимся по каждому пикселю изображения
+    change_pixel_map_pallete.clear();
     for (int y = 0; y < PaletteImage.height(); y++) {
         for (int x = 0; x < PaletteImage.width(); x++) {
             // Получаем оригинальный цвет пикселя
             QColor originalColor = PaletteImage.pixelColor(x, y);
-
-            // Переменные для хранения значений яркости и насыщенности цвета
-            int val = 0, sat = 0;
 
             // Проверяем, попадает ли оригинальный цвет в диапазон старого цвета
             if (originalColor.red() - 40 <= OldColor.red() &&
@@ -457,36 +459,51 @@ void MainWindow::changeColorPallete(QColor NewColor, QColor OldColor)
                 originalColor.blue() - 40 <= OldColor.blue() &&
                 originalColor.blue() + 40 >= OldColor.blue())
             {
-                // Если яркость оригинального цвета меньше 10
-                if (originalColor.value() < 10)
-                {
-                    sat = 250;
-                    val = 35;
-                }
-                else
-                {
-                    // Если яркость оригинального цвета больше или равна 200
-                    if (originalColor.value() >= 200)
-                    {
-                        sat = (originalColor.saturation() > 80) ? originalColor.saturation() : 80;
-                        val = 200;
-                    }
-                    else
-                    {
-                        sat = (originalColor.saturation() > 80) ? originalColor.saturation() : 80;
-                        val = originalColor.value();
-                    }
-                }
-
-                // Преобразуем новый цвет в HSV-пространство с соответствующей насыщенностью и яркостью
-                NewColor = QColor::fromHsv(NewColor.hue(), sat, val);
-
-                // Устанавливаем новый цвет пикселя
-                PaletteImage.setPixelColor(x, y, NewColor);
+                // заносим в массив значения координат пикселя и данные о его цвете
+                change_pixel_map_pallete.push_back(make_coord_color(x, y, originalColor));
             }
         }
     }
+}
 
+// Алгоритм изменения палитры изображения
+void MainWindow::changeColorPallete(QColor NewColor)
+{
+    // Создаем копию изображения палитры
+    QImage PaletteImage = CopyColorImageT.copy();
+
+    // Проходимся по каждому пикселю изображения через массив, хранящий координаты пикселей
+    //и какой цвет находится в этом пикселе
+    for (int i = 0; i < change_pixel_map_pallete.size(); i++)
+    {
+        // Переменные для хранения значений яркости и насыщенности цвета
+        int val = 0, sat = 0;
+        // Если яркость оригинального цвета меньше 10
+        if (change_pixel_map_pallete[i].color.value() < 10)
+        {
+            sat = 250;
+            val = 35;
+        }
+        else
+        {
+            // Если яркость оригинального цвета больше или равна 200
+            if (change_pixel_map_pallete[i].color.value() >= 200)
+            {
+                sat = (change_pixel_map_pallete[i].color.saturation() > 80) ? change_pixel_map_pallete[i].color.saturation() : 80;
+                val = 200;
+            }
+            else
+            {
+                sat = (change_pixel_map_pallete[i].color.saturation() > 80) ? change_pixel_map_pallete[i].color.saturation() : 80;
+                val = change_pixel_map_pallete[i].color.value();
+            }
+        }
+        // Преобразуем новый цвет в HSV-пространство с соответствующей насыщенностью и яркостью
+        NewColor = QColor::fromHsv(NewColor.hue(), sat, val);
+
+        // Устанавливаем новый цвет пикселя
+        PaletteImage.setPixelColor(change_pixel_map_pallete[i].x, change_pixel_map_pallete[i].y, NewColor);
+    }
     // Обновляем копию изображения палитры
     CopyColorImageT = PaletteImage.copy();
 
