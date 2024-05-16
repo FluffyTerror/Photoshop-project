@@ -570,7 +570,6 @@ void MainWindow::changeColorPallete(QColor NewColor)
     ui->graphicsView->setSceneRect(PalettePixmapItem->boundingRect());
     ui->graphicsView->fitInView(PalettePixmapItem, Qt::KeepAspectRatio);
 
-    //CopyColorImage=CopyColorImageT.copy();
     // Генерируем сигнал для разрешения добавления нового цвета
     emit color_pallete_allow_adding_a_new_color(NewColor);
 
