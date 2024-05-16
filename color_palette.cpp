@@ -1,7 +1,15 @@
+
+
 #include "color_palette.h"
 #include "ui_color_palette.h"
 #include <QApplication>
 #include <QMessageBox>
+
+/**
+ * @brief Конструктор класса color_palette.
+ *
+ * @param parent Указатель на родительский виджет. По умолчанию равен nullptr.
+ */
 color_palette::color_palette(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::color_palette)
@@ -14,7 +22,9 @@ color_palette::color_palette(QWidget *parent) :
 
 int global_num_button;
 
-// Деструктор класса color_palette
+/**
+ * @brief Деструктор класса color_palette.
+ */
 color_palette::~color_palette()
 {
     // Освобождение памяти, выделенной для ui
@@ -24,7 +34,7 @@ color_palette::~color_palette()
     delete ChangeColor_Main;
 
     // Очистка контейнера buttons и освобождение памяти, выделенной для кнопок
-    for (int i = 0; i <= buttons.size(); i++)
+    for (int i = 0; i < buttons.size(); i++)
     {
         delete buttons[i];
     }
@@ -34,7 +44,11 @@ color_palette::~color_palette()
     QColorsPalette.clear();
 }
 
-// Функция автоматического создания цветовой палитры
+/**
+ * @brief Функция автоматического создания цветовой палитры.
+ *
+ * @param colors Вектор цветов для создания палитры.
+ */
 void color_palette::auto_color_pal(std::vector<QColor> colors)
 {
     // Инициализация контейнера colorsString
@@ -68,7 +82,11 @@ void color_palette::auto_color_pal(std::vector<QColor> colors)
     }
 }
 
-// Обработчик изменения цвета
+/**
+ * @brief Обработчик изменения цвета.
+ *
+ * @param pos Позиция нового цвета.
+ */
 void color_palette::change_color(int pos)
 {
     QString colorString;
@@ -80,13 +98,21 @@ void color_palette::change_color(int pos)
     emit changeColorPaletteImage(newColor);
 }
 
-// Слот для обновления цвета в палитре
+/**
+ * @brief Слот для обновления цвета в палитре.
+ *
+ * @param NewColorPal Новый цвет для палитры.
+ */
 void color_palette::slots_color_pallete_allow_adding_a_new_color(QColor NewColorPal)
 {
     QColorsPalette[global_num_button] = NewColorPal;
 }
 
-// Обработчик нажатия на кнопку с цветом
+/**
+ * @brief Обработчик нажатия на кнопку с цветом.
+ *
+ * @param num Номер кнопки.
+ */
 void color_palette::handleColorButtonClicked(int num)
 {
     global_num_button = num;
@@ -94,7 +120,11 @@ void color_palette::handleColorButtonClicked(int num)
     emit color_button_clicked(QColorsPalette[global_num_button]);
 }
 
-// Обработчик изменения значения spinBox
+/**
+ * @brief Обработчик изменения значения spinBox.
+ *
+ * @param arg1 Новое значение spinBox.
+ */
 void color_palette::on_spinBox_valueChanged(int arg1)
 {
     for (QPushButton* button : buttons)
@@ -107,7 +137,11 @@ void color_palette::on_spinBox_valueChanged(int arg1)
     }
 }
 
-// Обработчик события закрытия окна
+/**
+ * @brief Обработчик события закрытия окна.
+ *
+ * @param event Указатель на событие закрытия окна.
+ */
 void color_palette::closeEvent(QCloseEvent *event)
 {
     if (event->spontaneous()) {
@@ -116,7 +150,9 @@ void color_palette::closeEvent(QCloseEvent *event)
     event->accept(); // Принимаем событие закрытия окна
 }
 
-// Обработчик нажатия кнопки "OK"
+/**
+ * @brief Обработчик нажатия кнопки "OK".
+ */
 void color_palette::on_ok_button_clicked()
 {
     // Очищаем палитру и генерируем сигнал о нажатии кнопки "OK"
@@ -124,7 +160,9 @@ void color_palette::on_ok_button_clicked()
     paletteOkClick();
 }
 
-// Функция очистки палитры
+/**
+ * @brief Функция очистки палитры.
+ */
 void color_palette::clearPalette()
 {
     // Очищаем контейнер buttons и освобождаем память, выделенную для кнопок
@@ -141,7 +179,9 @@ void color_palette::clearPalette()
     this->close();
 }
 
-// Обработчик нажатия кнопки "Закрыть"
+/**
+ * @brief Обработчик нажатия кнопки "Закрыть".
+ */
 void color_palette::on_close_button_clicked()
 {
     // Очищаем палитру и генерируем сигнал о нажатии кнопки "Закрыть"

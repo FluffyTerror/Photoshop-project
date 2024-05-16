@@ -1,8 +1,12 @@
+
 #include "cut_image_mod.h"
 #include "ui_cut_image_mod.h"
 #include "type_function.h"
 
-// Конструктор класса Cut_image_mod
+/**
+ * @brief Конструктор класса Cut_image_mod
+ * @param parent Указатель на родительский виджет. По умолчанию равен nullptr.
+ */
 Cut_image_mod::Cut_image_mod(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Cut_image_mod)
@@ -24,42 +28,58 @@ Cut_image_mod::Cut_image_mod(QWidget *parent) :
     this->setWindowIcon(icon);
 }
 
-// Деструктор класса Cut_image_mod
+/**
+ * @brief Деструктор класса Cut_image_mod
+ */
 Cut_image_mod::~Cut_image_mod()
 {
     // Освобождение памяти, выделенной для ui
     delete ui;
 }
 
-// Обработчик перемещения слайдера X
+/**
+ * @brief Обработчик перемещения слайдера X
+ * @param position Позиция слайдера
+ */
 void Cut_image_mod::on_XSlider_sliderMoved(int position)
 {
     // Генерируем сигнал о перемещении слайдера X и передаем новую позицию
     emit change_slider_position(x_fun_left, position);
 }
 
-// Обработчик перемещения слайдера X2
+/**
+ * @brief Обработчик перемещения слайдера X2
+ * @param position Позиция слайдера
+ */
 void Cut_image_mod::on_X2Slider_sliderMoved(int position)
 {
     // Генерируем сигнал о перемещении слайдера X2 и передаем новую позицию
     emit change_slider_position(x_fun_right, position);
 }
 
-// Обработчик перемещения слайдера Y
+/**
+ * @brief Обработчик перемещения слайдера Y
+ * @param position Позиция слайдера
+ */
 void Cut_image_mod::on_YSlider_sliderMoved(int position)
 {
     // Генерируем сигнал о перемещении слайдера Y и передаем новую позицию
     emit change_slider_position(y_fun_up, position);
 }
 
-// Обработчик перемещения слайдера Y2
+/**
+ * @brief Обработчик перемещения слайдера Y2
+ * @param position Позиция слайдера
+ */
 void Cut_image_mod::on_Y2Slider_sliderMoved(int position)
 {
     // Генерируем сигнал о перемещении слайдера Y2 и передаем новую позицию
     emit change_slider_position(y_fun_down, position);
 }
 
-// Обработчик нажатия кнопки "OK" для обрезки изображения
+/**
+ * @brief Обработчик нажатия кнопки "OK" для обрезки изображения
+ */
 void Cut_image_mod::on_cut_ok_clicked()
 {
     // Сохраняем текущие значения позиций слайдеров
@@ -73,7 +93,9 @@ void Cut_image_mod::on_cut_ok_clicked()
     this->close();
 }
 
-// Обработчик нажатия кнопки "Отмена" для отмены обрезки изображения
+/**
+ * @brief Обработчик нажатия кнопки "Отмена" для отмены обрезки изображения
+ */
 void Cut_image_mod::on_cut_cancellation_clicked()
 {
     // Восстанавливаем предыдущие значения позиций слайдеров
@@ -87,7 +109,10 @@ void Cut_image_mod::on_cut_cancellation_clicked()
     this->close();
 }
 
-// Обработчик события закрытия окна
+/**
+ * @brief Обработчик события закрытия окна
+ * @param event Событие закрытия окна
+ */
 void Cut_image_mod::closeEvent(QCloseEvent *event)
 {
     // Если закрытие окна произошло по нажатию на кнопку "X"
@@ -98,6 +123,3 @@ void Cut_image_mod::closeEvent(QCloseEvent *event)
     // Принимаем событие закрытия окна
     event->accept();
 }
-
-
-

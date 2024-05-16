@@ -1,0 +1,140 @@
+\doxysection{huesaturation Class Reference}
+\hypertarget{classhuesaturation}{}\label{classhuesaturation}\index{huesaturation@{huesaturation}}
+
+
+Класс huesaturation предоставляет интерфейс для изменения оттенка, насыщенности,яркости и преобразования изображения в монохромное.  
+
+
+
+
+{\ttfamily \#include $<$huesaturation.\+h$>$}
+
+Inheritance diagram for huesaturation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classhuesaturation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classhuesaturation_ab3e071884f54dc45d67702eb4d885a03}{parameters\+Changed}} (int hue, int saturation, int value)
+\begin{DoxyCompactList}\small\item\em Сигнал изменения параметров \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhuesaturation_aea1b29545311dcb904a8941f6bce53fc}{parameters\+Accepted}} (int hue, int saturation, int value)
+\begin{DoxyCompactList}\small\item\em Сигнал принятия параметров \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhuesaturation_afeb84ff5e4cc5ae3728985983a2d27c1}{saturation\+Changed}} (int saturation)
+\begin{DoxyCompactList}\small\item\em Сигнал изменения насыщенности \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhuesaturation_a116de5b22c777e70c24642ec2bb5ff51}{hue\+Changed}} (int hue)
+\begin{DoxyCompactList}\small\item\em Сигнал изменения оттенка \end{DoxyCompactList}\item 
+\Hypertarget{classhuesaturation_a2c5b077e9e27373ce492e56c475d32b9}\label{classhuesaturation_a2c5b077e9e27373ce492e56c475d32b9} 
+void {\bfseries auto\+Accepted} ()
+\begin{DoxyCompactList}\small\item\em Сигнал автоматического принятия параметров \end{DoxyCompactList}\item 
+\Hypertarget{classhuesaturation_a460ef152385bc57e5d8e498675533765}\label{classhuesaturation_a460ef152385bc57e5d8e498675533765} 
+void {\bfseries Cancel\+Mono} ()
+\begin{DoxyCompactList}\small\item\em Сигнал отмены изменений \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhuesaturation_a67f793b760f7e4a12863d4d52b4dacc3}{huesaturation}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса huesaturation. \end{DoxyCompactList}\item 
+\Hypertarget{classhuesaturation_a64c672dbb0115d89a7b5560548942469}\label{classhuesaturation_a64c672dbb0115d89a7b5560548942469} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}huesaturation} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса huesaturation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс huesaturation предоставляет интерфейс для изменения оттенка, насыщенности,яркости и преобразования изображения в монохромное. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhuesaturation_a67f793b760f7e4a12863d4d52b4dacc3}\label{classhuesaturation_a67f793b760f7e4a12863d4d52b4dacc3} 
+\index{huesaturation@{huesaturation}!huesaturation@{huesaturation}}
+\index{huesaturation@{huesaturation}!huesaturation@{huesaturation}}
+\doxysubsubsection{\texorpdfstring{huesaturation()}{huesaturation()}}
+{\footnotesize\ttfamily huesaturation\+::huesaturation (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса huesaturation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Указатель на родительский виджет \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhuesaturation_a116de5b22c777e70c24642ec2bb5ff51}\label{classhuesaturation_a116de5b22c777e70c24642ec2bb5ff51} 
+\index{huesaturation@{huesaturation}!hueChanged@{hueChanged}}
+\index{hueChanged@{hueChanged}!huesaturation@{huesaturation}}
+\doxysubsubsection{\texorpdfstring{hueChanged}{hueChanged}}
+{\footnotesize\ttfamily void huesaturation\+::hue\+Changed (\begin{DoxyParamCaption}\item[{int}]{hue }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал изменения оттенка 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hue} & Значение оттенка \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhuesaturation_aea1b29545311dcb904a8941f6bce53fc}\label{classhuesaturation_aea1b29545311dcb904a8941f6bce53fc} 
+\index{huesaturation@{huesaturation}!parametersAccepted@{parametersAccepted}}
+\index{parametersAccepted@{parametersAccepted}!huesaturation@{huesaturation}}
+\doxysubsubsection{\texorpdfstring{parametersAccepted}{parametersAccepted}}
+{\footnotesize\ttfamily void huesaturation\+::parameters\+Accepted (\begin{DoxyParamCaption}\item[{int}]{hue,  }\item[{int}]{saturation,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал принятия параметров 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hue} & Значение оттенка \\
+\hline
+{\em saturation} & Значение насыщенности \\
+\hline
+{\em value} & Значение яркости \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhuesaturation_ab3e071884f54dc45d67702eb4d885a03}\label{classhuesaturation_ab3e071884f54dc45d67702eb4d885a03} 
+\index{huesaturation@{huesaturation}!parametersChanged@{parametersChanged}}
+\index{parametersChanged@{parametersChanged}!huesaturation@{huesaturation}}
+\doxysubsubsection{\texorpdfstring{parametersChanged}{parametersChanged}}
+{\footnotesize\ttfamily void huesaturation\+::parameters\+Changed (\begin{DoxyParamCaption}\item[{int}]{hue,  }\item[{int}]{saturation,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал изменения параметров 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hue} & Значение оттенка \\
+\hline
+{\em saturation} & Значение насыщенности \\
+\hline
+{\em value} & Значение яркости \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhuesaturation_afeb84ff5e4cc5ae3728985983a2d27c1}\label{classhuesaturation_afeb84ff5e4cc5ae3728985983a2d27c1} 
+\index{huesaturation@{huesaturation}!saturationChanged@{saturationChanged}}
+\index{saturationChanged@{saturationChanged}!huesaturation@{huesaturation}}
+\doxysubsubsection{\texorpdfstring{saturationChanged}{saturationChanged}}
+{\footnotesize\ttfamily void huesaturation\+::saturation\+Changed (\begin{DoxyParamCaption}\item[{int}]{saturation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал изменения насыщенности 
+
+
+\begin{DoxyParams}{Parameters}
+{\em saturation} & Значение насыщенности \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/huesaturation.\+h\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/huesaturation.\+cpp\end{DoxyCompactItemize}

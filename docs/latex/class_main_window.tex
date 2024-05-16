@@ -1,0 +1,399 @@
+\doxysection{Main\+Window Class Reference}
+\hypertarget{class_main_window}{}\label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+\doxylink{class_main_window}{Main\+Window} класс Этот класс показывает основные части приложения  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_window_a7c8ed9a463f3f438e10433f3c1fd77b0}{on\+\_\+\+Select\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки выбора \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a47b809044036481f08c6c510c6ba55b9}{on\+\_\+\+Monochrome\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки монохрома \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_abea2285bc39a00072bb990041ebc1ee9}{on\+\_\+\+Accept}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки действия принятия \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aba78badc2029b7213abb528bb638ba42}{on\+\_\+\+Monochrome\+Auto}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки автоматической настройки монохрома \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aff29cc880663bf556e6c1de62b2a9526}{on\+\_\+\+Cancel\+Mono}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки действия отмены монохрома \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ac3f4bebc5dfbf307340af61e997e832a}{Image\+Accept}} (const QString \&filepath)
+\begin{DoxyCompactList}\small\item\em Слот для принятия изображения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ad80067605299c63dc64ccc2240eefcde}{on\+\_\+\+Cut\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки обрезки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a4bc1fc4b87d3db043062773c69ff25a6}{change\+\_\+size\+\_\+image}} (short type, int num\+\_\+cropped\+\_\+pixel)
+\begin{DoxyCompactList}\small\item\em Слот для изменения размера изображения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a71ca22c528408babf1fcdf9a2e8f3dca}{cut\+\_\+button\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки обрезки в окне обрезки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a39d5920683ff6cf49b447eb491f26443}{close\+\_\+cut\+\_\+button\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки закрытия в окне обрезки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a17be25a408e83135295e248044f389cd}{on\+\_\+color\+\_\+pal\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки палитры цветов \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a31079777b500fbc04a19f4f5dc559931}{on\+\_\+\+Save\+Button\+\_\+clicked}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки сохранения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_afb77c7e57333be5e22281d6c990445aa}{change\+Color\+Pallete}} (QColor New\+Color)
+\begin{DoxyCompactList}\small\item\em Слот для изменения палитры цветов \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a82ede7016547bc48f322756cbb8543df}{palette\+Ok\+Click}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки ОК в окне палитры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a9a2419e36b8fd4cad440363af28b1a91}{palette\+Close\+Click}} ()
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки закрытия в окне палитры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_acf97182ae1c9f77e7f7e4bcbafb463c0}{on\+\_\+\+Monochrome\+Parameters\+Changed}} (int hue, int saturation, int value)
+\begin{DoxyCompactList}\small\item\em Слот для обработки изменений параметров монохрома \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_abe6bc22137488f83c258ad3e69420e64}{clicked\+\_\+color\+\_\+button\+\_\+in\+\_\+pallete}} (QColor Old\+Color)
+\begin{DoxyCompactList}\small\item\em Слот для обработки нажатия кнопки цвета в палитре \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_window_a68748e344a64a6c30ef0be992aa1ff04}{color\+\_\+pallete\+\_\+inf}} (std\+::vector$<$ QColor $>$ colors\+\_\+pal)
+\begin{DoxyCompactList}\small\item\em Сигнал, передающий информацию о палитре цветов \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a7c970c99312e6938a704a9c46765b959}{color\+\_\+pallete\+\_\+allow\+\_\+adding\+\_\+a\+\_\+new\+\_\+color}} (QColor New\+Color)
+\begin{DoxyCompactList}\small\item\em Сигнал, разрешающий добавление нового цвета в палитру \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор \doxylink{class_main_window}{Main\+Window}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\texorpdfstring{$\sim$}{\string~}\+Main\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор для \doxylink{class_main_window}{Main\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_main_window_ace99ea0bd876631c64183b8d39439995}\label{class_main_window_ace99ea0bd876631c64183b8d39439995} 
+QGraphics\+Pixmap\+Item \texorpdfstring{$\ast$}{*} {\bfseries monochrome\+Pixmap\+Item}
+\begin{DoxyCompactList}\small\item\em Элемент для отображения монохромного изображения \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_ae8c4aab6625806721f93d14534b708e6}\label{class_main_window_ae8c4aab6625806721f93d14534b708e6} 
+QGraphics\+Pixmap\+Item \texorpdfstring{$\ast$}{*} {\bfseries Cut\+Pixmap\+Item}
+\begin{DoxyCompactList}\small\item\em Элемент для отображения обрезанного изображения \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_ae317d76f83bd487157c0c1dca8883428}\label{class_main_window_ae317d76f83bd487157c0c1dca8883428} 
+QGraphics\+Pixmap\+Item \texorpdfstring{$\ast$}{*} {\bfseries Palette\+Pixmap\+Item}
+\begin{DoxyCompactList}\small\item\em Элемент для отображения изображения палитры \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_a712224bbea90a3dee6caba6b39c4437f}\label{class_main_window_a712224bbea90a3dee6caba6b39c4437f} 
+QGraphics\+Pixmap\+Item \texorpdfstring{$\ast$}{*} {\bfseries original\+Pixmap\+Item}
+\begin{DoxyCompactList}\small\item\em Элемент для отображения оригинального изображения \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_ae14dde3a76c7b830d284264ccd29668d}\label{class_main_window_ae14dde3a76c7b830d284264ccd29668d} 
+\mbox{\hyperlink{classhuesaturation}{huesaturation}} \texorpdfstring{$\ast$}{*} {\bfseries hue\+Saturation\+Form}
+\begin{DoxyCompactList}\small\item\em Форма для настройки оттенка и насыщенности \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_a2a1fc346dfe736f413fe103fb9ad50de}\label{class_main_window_a2a1fc346dfe736f413fe103fb9ad50de} 
+QImage \texorpdfstring{$\ast$}{*} {\bfseries loaded\+Image}
+\begin{DoxyCompactList}\small\item\em Указатель на загруженное изображение \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_ae240aafe2751ac4f820187e924a1d372}\label{class_main_window_ae240aafe2751ac4f820187e924a1d372} 
+QImage {\bfseries Copy\+Color\+Image}
+\item 
+\Hypertarget{class_main_window_ae432f9edff9f7a71d52c27ce664b3e88}\label{class_main_window_ae432f9edff9f7a71d52c27ce664b3e88} 
+QImage {\bfseries Copy\+Color\+ImageT}
+\begin{DoxyCompactList}\small\item\em Копии цветного изображения \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_a51f53649311fad86a43b5508f3938d53}\label{class_main_window_a51f53649311fad86a43b5508f3938d53} 
+\mbox{\hyperlink{class_custom___view}{Custom\+\_\+\+View}} \texorpdfstring{$\ast$}{*} {\bfseries custom\+View}
+\begin{DoxyCompactList}\small\item\em Виджет пользовательского представления \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_af016d1a7408bf3e74b5387e4d7ed70eb}\label{class_main_window_af016d1a7408bf3e74b5387e4d7ed70eb} 
+\mbox{\hyperlink{class_cut__image__mod}{Cut\+\_\+image\+\_\+mod}} \texorpdfstring{$\ast$}{*} {\bfseries cut\+\_\+image}
+\begin{DoxyCompactList}\small\item\em Объект для функции обрезки изображения \end{DoxyCompactList}\item 
+\Hypertarget{class_main_window_a1daa34436e570b288e9edb3fbfc97380}\label{class_main_window_a1daa34436e570b288e9edb3fbfc97380} 
+\mbox{\hyperlink{classcolor__palette}{color\+\_\+palette}} \texorpdfstring{$\ast$}{*} {\bfseries color\+\_\+pal}
+\begin{DoxyCompactList}\small\item\em Объект для функции палитры цветов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_main_window}{Main\+Window} класс Этот класс показывает основные части приложения 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_main_window_a996c5a2b6f77944776856f08ec30858d}\label{class_main_window_a996c5a2b6f77944776856f08ec30858d} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{MainWindow()}{MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Конструктор \doxylink{class_main_window}{Main\+Window}. 
+
+Конструктор главного окна
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Указатель на родительский виджет\\
+\hline
+{\em parent} & Родительский виджет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}}
+\index{````~MainWindow@{\texorpdfstring{$\sim$}{\string~}MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MainWindow()}{\string~MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Деструктор для \doxylink{class_main_window}{Main\+Window}. 
+
+Деструктор 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_main_window_a4bc1fc4b87d3db043062773c69ff25a6}\label{class_main_window_a4bc1fc4b87d3db043062773c69ff25a6} 
+\index{MainWindow@{MainWindow}!change\_size\_image@{change\_size\_image}}
+\index{change\_size\_image@{change\_size\_image}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{change\_size\_image}{change\_size\_image}}
+{\footnotesize\ttfamily void Main\+Window\+::change\+\_\+size\+\_\+image (\begin{DoxyParamCaption}\item[{short}]{type,  }\item[{int}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для изменения размера изображения 
+
+Обработка движения ползунков в окне для обрезки изображения
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Тип изменения размера \\
+\hline
+{\em num\+\_\+cropped\+\_\+pixel} & Количество обрезанных пикселей\\
+\hline
+{\em type} & Тип обрезки \\
+\hline
+{\em position} & Позиция ползунка \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_afb77c7e57333be5e22281d6c990445aa}\label{class_main_window_afb77c7e57333be5e22281d6c990445aa} 
+\index{MainWindow@{MainWindow}!changeColorPallete@{changeColorPallete}}
+\index{changeColorPallete@{changeColorPallete}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{changeColorPallete}{changeColorPallete}}
+{\footnotesize\ttfamily void Main\+Window\+::change\+Color\+Pallete (\begin{DoxyParamCaption}\item[{QColor}]{New\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для изменения палитры цветов 
+
+Алгоритм изменения палитры изображения
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Color} & Новый цвет для установки в палитре\\
+\hline
+{\em New\+Color} & новый цвет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_abe6bc22137488f83c258ad3e69420e64}\label{class_main_window_abe6bc22137488f83c258ad3e69420e64} 
+\index{MainWindow@{MainWindow}!clicked\_color\_button\_in\_pallete@{clicked\_color\_button\_in\_pallete}}
+\index{clicked\_color\_button\_in\_pallete@{clicked\_color\_button\_in\_pallete}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{clicked\_color\_button\_in\_pallete}{clicked\_color\_button\_in\_pallete}}
+{\footnotesize\ttfamily void Main\+Window\+::clicked\+\_\+color\+\_\+button\+\_\+in\+\_\+pallete (\begin{DoxyParamCaption}\item[{QColor}]{Old\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки цвета в палитре 
+
+Mетод, который заносит в vector координаты пикселя, цвет которого нужно поменять
+
+
+\begin{DoxyParams}{Parameters}
+{\em Old\+Color} & Старый цвет, который нужно заменить\\
+\hline
+{\em Old\+Color} & старый цвет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_a39d5920683ff6cf49b447eb491f26443}\label{class_main_window_a39d5920683ff6cf49b447eb491f26443} 
+\index{MainWindow@{MainWindow}!close\_cut\_button\_clicked@{close\_cut\_button\_clicked}}
+\index{close\_cut\_button\_clicked@{close\_cut\_button\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{close\_cut\_button\_clicked}{close\_cut\_button\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::close\+\_\+cut\+\_\+button\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки закрытия в окне обрезки 
+
+Обработка кнопки отмена в режиме обрезки \Hypertarget{class_main_window_a7c970c99312e6938a704a9c46765b959}\label{class_main_window_a7c970c99312e6938a704a9c46765b959} 
+\index{MainWindow@{MainWindow}!color\_pallete\_allow\_adding\_a\_new\_color@{color\_pallete\_allow\_adding\_a\_new\_color}}
+\index{color\_pallete\_allow\_adding\_a\_new\_color@{color\_pallete\_allow\_adding\_a\_new\_color}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{color\_pallete\_allow\_adding\_a\_new\_color}{color\_pallete\_allow\_adding\_a\_new\_color}}
+{\footnotesize\ttfamily void Main\+Window\+::color\+\_\+pallete\+\_\+allow\+\_\+adding\+\_\+a\+\_\+new\+\_\+color (\begin{DoxyParamCaption}\item[{QColor}]{New\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал, разрешающий добавление нового цвета в палитру 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Color} & Новый цвет для добавления \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_a68748e344a64a6c30ef0be992aa1ff04}\label{class_main_window_a68748e344a64a6c30ef0be992aa1ff04} 
+\index{MainWindow@{MainWindow}!color\_pallete\_inf@{color\_pallete\_inf}}
+\index{color\_pallete\_inf@{color\_pallete\_inf}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{color\_pallete\_inf}{color\_pallete\_inf}}
+{\footnotesize\ttfamily void Main\+Window\+::color\+\_\+pallete\+\_\+inf (\begin{DoxyParamCaption}\item[{std\+::vector$<$ QColor $>$}]{colors\+\_\+pal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал, передающий информацию о палитре цветов 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colors\+\_\+pal} & Вектор цветов в палитре \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_a71ca22c528408babf1fcdf9a2e8f3dca}\label{class_main_window_a71ca22c528408babf1fcdf9a2e8f3dca} 
+\index{MainWindow@{MainWindow}!cut\_button\_clicked@{cut\_button\_clicked}}
+\index{cut\_button\_clicked@{cut\_button\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{cut\_button\_clicked}{cut\_button\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::cut\+\_\+button\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки обрезки в окне обрезки 
+
+Обработка нажатия кнопки обрезать в окне обрезки \Hypertarget{class_main_window_ac3f4bebc5dfbf307340af61e997e832a}\label{class_main_window_ac3f4bebc5dfbf307340af61e997e832a} 
+\index{MainWindow@{MainWindow}!ImageAccept@{ImageAccept}}
+\index{ImageAccept@{ImageAccept}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{ImageAccept}{ImageAccept}}
+{\footnotesize\ttfamily void Main\+Window\+::\+Image\+Accept (\begin{DoxyParamCaption}\item[{const QString \&}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для принятия изображения 
+
+Слот для создания копии изображения, реагирует при выводе объекта на сцену
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Путь к файлу изображения\\
+\hline
+{\em filepath} & Путь к загруженному файлу \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_abea2285bc39a00072bb990041ebc1ee9}\label{class_main_window_abea2285bc39a00072bb990041ebc1ee9} 
+\index{MainWindow@{MainWindow}!on\_Accept@{on\_Accept}}
+\index{on\_Accept@{on\_Accept}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_Accept}{on\_Accept}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Accept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки действия принятия 
+
+Обработка кнопки "{}Принять"{} в окне Монохром \Hypertarget{class_main_window_aff29cc880663bf556e6c1de62b2a9526}\label{class_main_window_aff29cc880663bf556e6c1de62b2a9526} 
+\index{MainWindow@{MainWindow}!on\_CancelMono@{on\_CancelMono}}
+\index{on\_CancelMono@{on\_CancelMono}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_CancelMono}{on\_CancelMono}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Cancel\+Mono (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки действия отмены монохрома 
+
+Обработка нажатия кнопки "{}Отмена"{} при работе в режиме монохром \Hypertarget{class_main_window_a17be25a408e83135295e248044f389cd}\label{class_main_window_a17be25a408e83135295e248044f389cd} 
+\index{MainWindow@{MainWindow}!on\_color\_pal\_clicked@{on\_color\_pal\_clicked}}
+\index{on\_color\_pal\_clicked@{on\_color\_pal\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_color\_pal\_clicked}{on\_color\_pal\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+color\+\_\+pal\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки палитры цветов 
+
+Обработка нажатия кнопки Палитра \Hypertarget{class_main_window_ad80067605299c63dc64ccc2240eefcde}\label{class_main_window_ad80067605299c63dc64ccc2240eefcde} 
+\index{MainWindow@{MainWindow}!on\_Cut\_clicked@{on\_Cut\_clicked}}
+\index{on\_Cut\_clicked@{on\_Cut\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_Cut\_clicked}{on\_Cut\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Cut\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки обрезки 
+
+Обработка нажатия кнопки "{}Обрезать"{}. \Hypertarget{class_main_window_a47b809044036481f08c6c510c6ba55b9}\label{class_main_window_a47b809044036481f08c6c510c6ba55b9} 
+\index{MainWindow@{MainWindow}!on\_Monochrome\_clicked@{on\_Monochrome\_clicked}}
+\index{on\_Monochrome\_clicked@{on\_Monochrome\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_Monochrome\_clicked}{on\_Monochrome\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Monochrome\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки монохрома 
+
+Обработка нажатия кнопки "{}Монохром"{}. \Hypertarget{class_main_window_aba78badc2029b7213abb528bb638ba42}\label{class_main_window_aba78badc2029b7213abb528bb638ba42} 
+\index{MainWindow@{MainWindow}!on\_MonochromeAuto@{on\_MonochromeAuto}}
+\index{on\_MonochromeAuto@{on\_MonochromeAuto}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_MonochromeAuto}{on\_MonochromeAuto}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Monochrome\+Auto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки автоматической настройки монохрома 
+
+Слот для обработки нажатия кнопки "{}Авто"{} в режиме работы с монохромом \Hypertarget{class_main_window_acf97182ae1c9f77e7f7e4bcbafb463c0}\label{class_main_window_acf97182ae1c9f77e7f7e4bcbafb463c0} 
+\index{MainWindow@{MainWindow}!on\_MonochromeParametersChanged@{on\_MonochromeParametersChanged}}
+\index{on\_MonochromeParametersChanged@{on\_MonochromeParametersChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_MonochromeParametersChanged}{on\_MonochromeParametersChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Monochrome\+Parameters\+Changed (\begin{DoxyParamCaption}\item[{int}]{hue,  }\item[{int}]{saturation,  }\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки изменений параметров монохрома 
+
+Функция, отвечающая за применение параметров из окна Монохром
+
+
+\begin{DoxyParams}{Parameters}
+{\em hue} & Значение оттенка \\
+\hline
+{\em saturation} & Значение насыщенности \\
+\hline
+{\em value} & Значение яркости \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_window_a31079777b500fbc04a19f4f5dc559931}\label{class_main_window_a31079777b500fbc04a19f4f5dc559931} 
+\index{MainWindow@{MainWindow}!on\_SaveButton\_clicked@{on\_SaveButton\_clicked}}
+\index{on\_SaveButton\_clicked@{on\_SaveButton\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_SaveButton\_clicked}{on\_SaveButton\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Save\+Button\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки сохранения 
+
+Обработчик нажатия кнопки "{}\+Save"{}. \Hypertarget{class_main_window_a7c8ed9a463f3f438e10433f3c1fd77b0}\label{class_main_window_a7c8ed9a463f3f438e10433f3c1fd77b0} 
+\index{MainWindow@{MainWindow}!on\_Select\_clicked@{on\_Select\_clicked}}
+\index{on\_Select\_clicked@{on\_Select\_clicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_Select\_clicked}{on\_Select\_clicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+\+Select\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки выбора 
+
+Слот, обрабатывающий нажатие клавиши загрузки изображения \Hypertarget{class_main_window_a9a2419e36b8fd4cad440363af28b1a91}\label{class_main_window_a9a2419e36b8fd4cad440363af28b1a91} 
+\index{MainWindow@{MainWindow}!paletteCloseClick@{paletteCloseClick}}
+\index{paletteCloseClick@{paletteCloseClick}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{paletteCloseClick}{paletteCloseClick}}
+{\footnotesize\ttfamily void Main\+Window\+::palette\+Close\+Click (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки закрытия в окне палитры 
+
+Обработка кнопки Отмена в окне палитры \Hypertarget{class_main_window_a82ede7016547bc48f322756cbb8543df}\label{class_main_window_a82ede7016547bc48f322756cbb8543df} 
+\index{MainWindow@{MainWindow}!paletteOkClick@{paletteOkClick}}
+\index{paletteOkClick@{paletteOkClick}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{paletteOkClick}{paletteOkClick}}
+{\footnotesize\ttfamily void Main\+Window\+::palette\+Ok\+Click (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработки нажатия кнопки ОК в окне палитры 
+
+Обработка кнопки ОК в окне палитры 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/mainwindow.\+h\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/mainwindow.\+cpp\end{DoxyCompactItemize}

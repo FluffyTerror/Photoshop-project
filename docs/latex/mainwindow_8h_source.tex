@@ -1,0 +1,99 @@
+\doxysection{C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/mainwindow.h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}events.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}huesaturation.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}qgraphicsitem.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}cut\_image\_mod.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}color\_palette.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ui}{Ui}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ QGraphicsPixmapItem\ *\mbox{\hyperlink{class_main_window_ace99ea0bd876631c64183b8d39439995}{monochromePixmapItem}};\ }
+\DoxyCodeLine{00039\ \ \ \ \ QGraphicsPixmapItem\ *\mbox{\hyperlink{class_main_window_ae8c4aab6625806721f93d14534b708e6}{CutPixmapItem}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ QGraphicsPixmapItem\ *\mbox{\hyperlink{class_main_window_ae317d76f83bd487157c0c1dca8883428}{PalettePixmapItem}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ QGraphicsPixmapItem\ *\mbox{\hyperlink{class_main_window_a712224bbea90a3dee6caba6b39c4437f}{originalPixmapItem}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classhuesaturation}{huesaturation}}\ *\mbox{\hyperlink{class_main_window_ae14dde3a76c7b830d284264ccd29668d}{hueSaturationForm}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ QImage\ *\mbox{\hyperlink{class_main_window_a2a1fc346dfe736f413fe103fb9ad50de}{loadedImage}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ QImage\ CopyColorImage,\ \mbox{\hyperlink{class_main_window_ae432f9edff9f7a71d52c27ce664b3e88}{CopyColorImageT}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_custom___view}{Custom\_View}}\ *\mbox{\hyperlink{class_main_window_a51f53649311fad86a43b5508f3938d53}{customView}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_cut__image__mod}{Cut\_image\_mod}}\ *\mbox{\hyperlink{class_main_window_af016d1a7408bf3e74b5387e4d7ed70eb}{cut\_image}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classcolor__palette}{color\_palette}}\ *\mbox{\hyperlink{class_main_window_a1daa34436e570b288e9edb3fbfc97380}{color\_pal}};\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a7c8ed9a463f3f438e10433f3c1fd77b0}{on\_Select\_clicked}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a47b809044036481f08c6c510c6ba55b9}{on\_Monochrome\_clicked}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_abea2285bc39a00072bb990041ebc1ee9}{on\_Accept}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_aba78badc2029b7213abb528bb638ba42}{on\_MonochromeAuto}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_aff29cc880663bf556e6c1de62b2a9526}{on\_CancelMono}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_ac3f4bebc5dfbf307340af61e997e832a}{ImageAccept}}(\textcolor{keyword}{const}\ QString\ \&filepath);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_ad80067605299c63dc64ccc2240eefcde}{on\_Cut\_clicked}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a4bc1fc4b87d3db043062773c69ff25a6}{change\_size\_image}}(\textcolor{keywordtype}{short}\ type,\ \textcolor{keywordtype}{int}\ num\_cropped\_pixel);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a71ca22c528408babf1fcdf9a2e8f3dca}{cut\_button\_clicked}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a39d5920683ff6cf49b447eb491f26443}{close\_cut\_button\_clicked}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a17be25a408e83135295e248044f389cd}{on\_color\_pal\_clicked}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a31079777b500fbc04a19f4f5dc559931}{on\_SaveButton\_clicked}}();}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_afb77c7e57333be5e22281d6c990445aa}{changeColorPallete}}(QColor\ NewColor);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a82ede7016547bc48f322756cbb8543df}{paletteOkClick}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a9a2419e36b8fd4cad440363af28b1a91}{paletteCloseClick}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_acf97182ae1c9f77e7f7e4bcbafb463c0}{on\_MonochromeParametersChanged}}(\textcolor{keywordtype}{int}\ hue,\ \textcolor{keywordtype}{int}\ saturation,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_abe6bc22137488f83c258ad3e69420e64}{clicked\_color\_button\_in\_pallete}}(QColor\ OldColor);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ signals:}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a68748e344a64a6c30ef0be992aa1ff04}{color\_pallete\_inf}}(std::vector<QColor>\ colors\_pal);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a7c970c99312e6938a704a9c46765b959}{color\_pallete\_allow\_adding\_a\_new\_color}}(QColor\ NewColor);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{struct\ }coord\_color\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y;\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ QColor\ color;\ }
+\DoxyCodeLine{00164\ \ \ \ \ \};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00173\ \ \ \ \ coord\_color\ make\_coord\_color(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ QColor\ color);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ Ui::MainWindow\ *ui;\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{void}\ crop\_image(QImage\ cut\_image\_t,\ QRect\ cropRect\_t);\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{void}\ colors\_sort();\ }
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ std::vector<coord\_color>\ change\_pixel\_map\_pallete;\ }
+\DoxyCodeLine{00180\ \};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

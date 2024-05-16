@@ -1,3 +1,4 @@
+
 #include "mainwindow.h"
 #include "huesaturation.h"
 #include "ui_mainwindow.h"
@@ -5,39 +6,54 @@
 #include "cut_image_mod.h"
 #include "type_function.h"
 
-    struct cut_struct //структура для хранения размера обрезанного изображения
-{
-    int  num_cropped_pixel_x = 0, num_cropped_pixel_y = 0, num_cropped_pixel_x2 = 0, num_cropped_pixel_y2 = 0;
-}cropped;
+/**
+ * @brief Структура для хранения размеров обрезанного изображения
+ */
+struct cut_struct {
+    int num_cropped_pixel_x = 0; //< Количество обрезанных пикселей по оси X слева
+    int num_cropped_pixel_y = 0; //< Количество обрезанных пикселей по оси Y сверху
+    int num_cropped_pixel_x2 = 0; //< Количество обрезанных пикселей по оси X справа
+    int num_cropped_pixel_y2 = 0; //< Количество обрезанных пикселей по оси Y снизу
+} cropped;
+
 cut_struct old_cropped;
 
-
-// функция, которая на основе структуры cut_struct обрезает фотографию и возвращает обрезанную ферсию
-QRect CropImage_for_scene(QImage Image)
-{
-    int w = Image.width() - ((cropped.num_cropped_pixel_x2 > Image.width())? Image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
-    int h = Image.height() - ((cropped.num_cropped_pixel_y2 > Image.height())? Image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
+/**
+ * @brief Функция для обрезки изображения на основе структуры cut_struct
+ * @param Image Изображение, которое нужно обрезать
+ * @return Прямоугольник, определяющий область обрезанного изображения
+ */
+QRect CropImage_for_scene(QImage Image) {
+    int w = Image.width() - ((cropped.num_cropped_pixel_x2 > Image.width()) ? Image.width() : cropped.num_cropped_pixel_x2) - cropped.num_cropped_pixel_x;
+    int h = Image.height() - ((cropped.num_cropped_pixel_y2 > Image.height()) ? Image.height() : cropped.num_cropped_pixel_y2) - cropped.num_cropped_pixel_y;
     QRect cropRect(cropped.num_cropped_pixel_x, cropped.num_cropped_pixel_y, w, h);
     return cropRect;
 }
 
-//конструктор окна
+/**
+ * @brief Конструктор главного окна
+ * @param parent Родительский виджет
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //дизайн
+
+    // Устанавливаем заголовок окна
     this->setWindowTitle("Paint");
+    // Отключаем статусную строку
     this->setStatusBar(nullptr);
+    // Устанавливаем иконку приложения
     QIcon icon(":/icons/mainicon.png");
     this->setWindowIcon(icon);
-    //Создаем объекты форм для различных окон
+
+    // Создаем объекты форм для различных окон
     hueSaturationForm = new huesaturation();
     cut_image = new Cut_image_mod();
     color_pal = new color_palette();
 
-    //Привязка сигналов из других окон к слотам в MainWindow
+    // Привязка сигналов из других окон к слотам в MainWindow
     connect(hueSaturationForm, &huesaturation::autoAccepted, this, &MainWindow::on_MonochromeAuto);
     connect(hueSaturationForm, &huesaturation::CancelMono, this, &MainWindow::on_CancelMono);
     connect(cut_image, &Cut_image_mod::change_slider_position, this, &MainWindow::change_size_image);
@@ -54,39 +70,40 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(color_pal, &color_palette::color_button_clicked, this, &MainWindow::clicked_color_button_in_pallete);
 }
 
-//слот, обрабатывающий нажатие клавиши загрузки изображения
+/**
+ * @brief Слот, обрабатывающий нажатие клавиши загрузки изображения
+ */
 void MainWindow::on_Select_clicked()
 {
-    //открываем окно с проводником для выбора загружаемого изображения
+    // Открываем окно с проводником для выбора загружаемого изображения
     QString filepath = QFileDialog::getOpenFileName(this, tr("Open File"), "C://", "Image Files (*.png *.jpg *.jpeg)");
-    //устанавливаем нули в параметры обрезанных пикселей
+    // Устанавливаем нули в параметры обрезанных пикселей
     cropped.num_cropped_pixel_x = 0;
     cropped.num_cropped_pixel_x2 = 0;
     cropped.num_cropped_pixel_y = 0;
     cropped.num_cropped_pixel_y2 = 0;
 
-
     if (!filepath.isEmpty()) {
-        // при корректном чтении изображения из проводника выводим его на сцену
+        // При корректном чтении изображения из проводника выводим его на сцену
         QImage *image = new QImage();
         if (image->load(filepath)) {
             CopyColorImage = *image;
             // Загрузить изображение в Custom_View для отображения
             Custom_View *customView = ui->graphicsView;
             customView->loadImage(filepath);
-
-        } else { //при неудаче выводится ошибка
+        } else {
+            // При неудаче выводится ошибка
             QMessageBox::warning(this, tr("Error"), tr("Failed to load image from file!"));
             delete image; // Освободить память, если загрузка изображения не удалась
         }
     }
 }
 
-
-
-
-//слот для создания копии изображения , реагирует при выводе объекта на сцену
-void MainWindow::ImageAccept(const QString &filepath){
+/**
+ * @brief Слот для создания копии изображения, реагирует при выводе объекта на сцену
+ * @param filepath Путь к загруженному файлу
+ */
+void MainWindow::ImageAccept(const QString &filepath) {
     QImage *image = new QImage();
     if (image->load(filepath)) {
         CopyColorImage = image->copy();
@@ -97,26 +114,30 @@ void MainWindow::ImageAccept(const QString &filepath){
     }
 }
 
-
-
-//обработка нажатия кнопки "Монохром"
+/**
+ * @brief Обработка нажатия кнопки "Монохром"
+ */
 void MainWindow::on_Monochrome_clicked()
 {
-    //Проверка, есть ли изображение на сцене
+    // Проверка, есть ли изображение на сцене
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
     }
-    //отображение окна применения эффектов для тонирования
+    // Отображение окна применения эффектов для тонирования
     hueSaturationForm->show();
     this->setEnabled(false);
-    //применение нейтральных параметров к изображению
-    on_MonochromeParametersChanged(0,0,0);
+    // Применение нейтральных параметров к изображению
+    on_MonochromeParametersChanged(0, 0, 0);
 }
 
-
-//Функция, отвечающая за применение параметров из окна Монохром
-void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int value)
+/**
+ * @brief Функция, отвечающая за применение параметров из окна Монохром
+ * @param hue Значение оттенка
+ * @param saturation Значение насыщенности
+ * @param value Значение яркости
+ */
+void MainWindow::on_MonochromeParametersChanged(int hue, int saturation, int value)
 {
     QImage monochromeImage = CopyColorImage.copy(); // Создаем копию оригинального изображения
 
@@ -126,43 +147,40 @@ void MainWindow::on_MonochromeParametersChanged(int hue,int saturation, int valu
     QColor newColor;
     double newValue;
 
-    //начинаем перебирать каждый пиксель изображения
+    // Начинаем перебирать каждый пиксель изображения
     for (int y = 0; y < monochromeImage.height(); ++y) {
         for (int x = 0; x < monochromeImage.width(); ++x) {
+            color = monochromeImage.pixelColor(x, y); // Запоминаем цвет оригинального пикселя
+            gray = int((qGray(color.rgb()))); // Получаем его монохромную версию
 
-            color = monochromeImage.pixelColor(x, y); //запоминаем цвет оригинального пикселя
-            gray = int((qGray(color.rgb()))); //получаем его монохромную версию
-
-            if(value >=0){ //если значение яркости >= нуля, используем равномерно распределенную формулу для увелечения яркости
-                newValue = static_cast<double>(value)/ 100;
+            if (value >= 0) { // Если значение яркости >= нуля, используем равномерно распределенную формулу для увеличения яркости
+                newValue = static_cast<double>(value) / 100;
                 result = (gray + (newValue) * (255 - gray));
-            }
-            else{ //формула для уменьшения
-                newValue = static_cast<double>(-value)/ 100;
+            } else { // Формула для уменьшения яркости
+                newValue = static_cast<double>(-value) / 100;
                 result = (gray - (newValue) * (gray));
             }
-            //получаем новый цвет путем установки полученных параметров
-            newColor = QColor::fromHsv(hue,  (saturation + 100) * 255 / 200, result );
-            //устанавливаем новый увет пикселю
+            // Получаем новый цвет путем установки полученных параметров
+            newColor = QColor::fromHsv(hue, (saturation + 100) * 255 / 200, result);
+            // Устанавливаем новый цвет пикселю
             monochromeImage.setPixelColor(x, y, newColor);
         }
     }
     CopyColorImageT = monochromeImage.copy();
     monochromeImage = monochromeImage.copy(CropImage_for_scene(CopyColorImageT));
 
-    //приводим изображение к нужному типу данных
+    // Приводим изображение к нужному типу данных
     monochromePixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(monochromeImage));
     // Добавляем монохромное изображение на сцену и отображаем его, удаляем предыдущее
     delete ui->graphicsView->scene->items().first();
     ui->graphicsView->scene->addItem(monochromePixmapItem);
     ui->graphicsView->fitInView(monochromePixmapItem, Qt::KeepAspectRatio);
-
 }
 
-
-//слот для обработки нажатия кнопки Авто в режиме работы с монохромом
-void MainWindow::on_MonochromeAuto(){
-
+/**
+ * @brief Слот для обработки нажатия кнопки "Авто" в режиме работы с монохромом
+ */
+void MainWindow::on_MonochromeAuto() {
     QImage monochromeImage = CopyColorImage.copy(); // Создаем копию оригинального изображения
     QColor color;
     int gray;
@@ -184,14 +202,18 @@ void MainWindow::on_MonochromeAuto(){
     this->setEnabled(true);
 }
 
-//Обработка кнопки Принять в окне Монохром
-void MainWindow::on_Accept(){
+/**
+ * @brief Обработка кнопки "Принять" в окне Монохром
+ */
+void MainWindow::on_Accept() {
     CopyColorImage = CopyColorImageT.copy();
     this->setEnabled(true);
 }
 
-//Обработка нажатия кнопки "Отмена" при работе в режиме монохром
-void MainWindow::on_CancelMono(){
+/**
+ * @brief Обработка нажатия кнопки "Отмена" при работе в режиме монохром
+ */
+void MainWindow::on_CancelMono() {
     // Преобразование QImage в QPixmap
     QImage cut_image = CopyColorImage.copy();
     QPixmap pixmap = QPixmap::fromImage(CopyColorImage.copy(CropImage_for_scene(cut_image)));
@@ -201,15 +223,17 @@ void MainWindow::on_CancelMono(){
     delete ui->graphicsView->scene->items().first();
     ui->graphicsView->scene->addItem(pixmapItem);
     ui->graphicsView->setSceneRect(pixmapItem->boundingRect());
-    //Установка исхдного изображения до применения тонирования
+    // Установка исходного изображения до применения тонирования
     ui->graphicsView->fitInView(pixmapItem, Qt::KeepAspectRatio);
     this->setEnabled(true);
 }
 
-
-//Функция для вывода обрезанного изображения изображения
-void MainWindow::crop_image (QImage cut_image_t, QRect cropRect_t)
-{
+/**
+ * @brief Функция для вывода обрезанного изображения
+ * @param cut_image_t Обрезанное изображение
+ * @param cropRect_t Область обрезки
+ */
+void MainWindow::crop_image(QImage cut_image_t, QRect cropRect_t) {
     cut_image_t = CopyColorImage.copy(cropRect_t);
     CutPixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(cut_image_t));
     delete ui->graphicsView->scene->items().value(0);
@@ -217,10 +241,12 @@ void MainWindow::crop_image (QImage cut_image_t, QRect cropRect_t)
     ui->graphicsView->setSceneRect(CutPixmapItem->boundingRect());
     ui->graphicsView->fitInView(CutPixmapItem, Qt::KeepAspectRatio);
 }
-//обработка нажатия кнопки Обрезать
-void MainWindow::on_Cut_clicked()
-{
-    //проверка на наличие изображения
+
+/**
+ * @brief Обработка нажатия кнопки "Обрезать"
+ */
+void MainWindow::on_Cut_clicked() {
+    // Проверка на наличие изображения
     if (ui->graphicsView->scene->items().isEmpty()) {
         QMessageBox::warning(this, tr("Error"), tr("No image loaded!"));
         return;
@@ -228,70 +254,67 @@ void MainWindow::on_Cut_clicked()
     this->setEnabled(false);
     old_cropped = cropped;
 
-    //отображение окна обрезания
+    // Отображение окна обрезания
     cut_image->show();
     change_size_image(0, 0);
 }
 
-//Обработка движения ползунков в окне для обрезки изображения
-void MainWindow::change_size_image(short type, int position)
-{
+/**
+ * @brief Обработка движения ползунков в окне для обрезки изображения
+ * @param type Тип обрезки
+ * @param position Позиция ползунка
+ */
+void MainWindow::change_size_image(short type, int position) {
     QImage cut_image = CopyColorImage.copy();
 
-    //вычисляется процент фото, который нужно обрезать и с какой стороны
-    switch(type)
-    {
-    case x_fun_right:
-    {
+    // Вычисляется процент фото, который нужно обрезать и с какой стороны
+    switch (type) {
+    case x_fun_right: {
         cropped.num_cropped_pixel_x2 = round((cut_image.width() * position) / 100.0);
         cropped.num_cropped_pixel_x2 *= -1;
         break;
     }
-    case x_fun_left:
-    {
+    case x_fun_left: {
         cropped.num_cropped_pixel_x = round((cut_image.width() * position) / 100.0);
         break;
     }
-    case y_fun_up:
-    {
+    case y_fun_up: {
         cropped.num_cropped_pixel_y = round((cut_image.height() * position) / 100.0);
         cropped.num_cropped_pixel_y *= -1;
         break;
     }
-    case y_fun_down:
-    {
+    case y_fun_down: {
         cropped.num_cropped_pixel_y2 = round((cut_image.height() * position) / 100.0);
         break;
     }
     default:
-    {
         break;
     }
-    //Замена обрезанных пикселей для визуального отображения обрезки
-    }
-    for (int y = 0; y < ((cropped.num_cropped_pixel_y > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y); ++y) {
-        for (int x = 0; x <  cut_image.width(); ++x) {
+
+    // Замена обрезанных пикселей для визуального отображения обрезки
+    for (int y = 0; y < ((cropped.num_cropped_pixel_y > cut_image.height()) ? cut_image.height() : cropped.num_cropped_pixel_y); ++y) {
+        for (int x = 0; x < cut_image.width(); ++x) {
             cut_image.setPixelColor(x, y, QColor(Qt::white));
         }
     }
     for (int y = 0; y < cut_image.height(); ++y) {
-        for (int x = 0; x < ((cropped.num_cropped_pixel_x > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x); ++x) {
+        for (int x = 0; x < ((cropped.num_cropped_pixel_x > cut_image.width()) ? cut_image.width() : cropped.num_cropped_pixel_x); ++x) {
             cut_image.setPixelColor(x, y, QColor(Qt::white));
         }
     }
 
     for (int y = 0; y < cut_image.height(); ++y) {
-        for (int x = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width())? cut_image.width() : cropped.num_cropped_pixel_x2); x < cut_image.width(); ++x) {
+        for (int x = cut_image.width() - ((cropped.num_cropped_pixel_x2 > cut_image.width()) ? cut_image.width() : cropped.num_cropped_pixel_x2); x < cut_image.width(); ++x) {
             cut_image.setPixelColor(x, y, QColor(Qt::white));
         }
     }
-    for (int y = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height())? cut_image.height() : cropped.num_cropped_pixel_y2); y < cut_image.height(); ++y) {
-        for (int x = 0; x <  cut_image.width(); ++x) {
+    for (int y = cut_image.height() - ((cropped.num_cropped_pixel_y2 > cut_image.height()) ? cut_image.height() : cropped.num_cropped_pixel_y2); y < cut_image.height(); ++y) {
+        for (int x = 0; x < cut_image.width(); ++x) {
             cut_image.setPixelColor(x, y, QColor(Qt::white));
         }
     }
 
-    //Установка нового обрезанного изображения на сцену
+    // Установка нового обрезанного изображения на сцену
     CutPixmapItem = new QGraphicsPixmapItem(QPixmap::fromImage(cut_image));
     delete ui->graphicsView->scene->items().value(0);
     ui->graphicsView->scene->addItem(CutPixmapItem);
@@ -301,7 +324,9 @@ void MainWindow::change_size_image(short type, int position)
 
 
 
-//Обработка нажатия кнопки обрезать в окне обрезки
+/**
+ * @brief Обработка нажатия кнопки обрезать в окне обрезки
+ */
 void MainWindow::cut_button_clicked()
 {
     this->setEnabled(true);
@@ -312,7 +337,9 @@ void MainWindow::cut_button_clicked()
     crop_image( CopyColorImage, cropRect);
 }
 
-//Обработка кнопки отмена в режиме обрезки
+/**
+ * @brief Обработка кнопки отмена в режиме обрезки
+ */
 void MainWindow::close_cut_button_clicked()
 {
     this->setEnabled(true);
@@ -324,7 +351,9 @@ void MainWindow::close_cut_button_clicked()
 
 }
 
-//Обработка нажатия кнопки Палитра
+/**
+ * @brief Обработка нажатия кнопки Палитра
+ */
 void MainWindow::on_color_pal_clicked()
 {
     //Проверка на наличие изображения
@@ -343,7 +372,9 @@ void MainWindow::on_color_pal_clicked()
 
 
 
-//Алгоритм вычиления палитры цветов
+/**
+ * @brief Алгоритм вычиления палитры цветов
+ */
 void MainWindow::colors_sort()
 {
     // Создаем копию изображения
@@ -411,7 +442,13 @@ void MainWindow::colors_sort()
     emit color_pallete_inf(colors);
 }
 
-// метод класса для заполнения внутреней структуры класса mainwindow
+/**
+ * @brief метод класса для заполнения внутреней структуры класса mainwindow
+ * @param x - ширина
+ * @param y - высота
+ * @param color цвет
+ * @return заполненная структура
+ */
 MainWindow::coord_color MainWindow::make_coord_color(int x, int y, QColor color)
 {
     coord_color Tcolor;
@@ -421,14 +458,18 @@ MainWindow::coord_color MainWindow::make_coord_color(int x, int y, QColor color)
     return Tcolor;
 }
 
-//Обработка кнопки ОК в окне палитры
+/**
+ * @brief Обработка кнопки ОК в окне палитры
+ */
 void MainWindow::paletteOkClick()
 {
     CopyColorImage = CopyColorImageT.copy();
     this->setEnabled(true);
 }
 
-//Обработка кнопки Отмена в окне палитры
+/**
+ * @brief Обработка кнопки Отмена в окне палитры
+ */
 void MainWindow::paletteCloseClick()
 {
     QImage CopyImageCut = CopyColorImage.copy();
@@ -441,7 +482,10 @@ void MainWindow::paletteCloseClick()
     this->setEnabled(true);
 }
 
-// метод, который заносит в vector координаты пикселя, цвет которого нужно поменять
+/**
+ * @brief Mетод, который заносит в vector координаты пикселя, цвет которого нужно поменять
+ * @param OldColor старый цвет
+ */
 void MainWindow::clicked_color_button_in_pallete(QColor OldColor)
 {
     QImage PaletteImage = CopyColorImageT.copy();
@@ -466,7 +510,10 @@ void MainWindow::clicked_color_button_in_pallete(QColor OldColor)
     }
 }
 
-// Алгоритм изменения палитры изображения
+/**
+ * @brief  Алгоритм изменения палитры изображения
+ * @param NewColor новый цвет
+ */
 void MainWindow::changeColorPallete(QColor NewColor)
 {
     // Создаем копию изображения палитры
@@ -528,7 +575,9 @@ void MainWindow::changeColorPallete(QColor NewColor)
 }
 
 
-// Обработчик нажатия кнопки "Save"
+/**
+ * @brief Обработчик нажатия кнопки "Save"
+ */
 void MainWindow::on_SaveButton_clicked()
 {
     // Проверяем, загружено ли изображение
@@ -580,7 +629,9 @@ void MainWindow::on_SaveButton_clicked()
 }
 
 
-//Деструктор
+/**
+ * @brief Деструктор
+ */
 MainWindow::~MainWindow()
 {
     delete ui;

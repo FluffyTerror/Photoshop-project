@@ -2,6 +2,10 @@
 #include "changecolorpalette.h"
 #include "ui_changecolorpalette.h"
 
+/**
+ * @brief Конструктор формы для изменения цвета
+ * @param parent Указатель на родительский виджет. По умолчанию равен nullptr.
+ */
 changeColorPalette::changeColorPalette(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::changeColorPalette)
@@ -45,20 +49,23 @@ changeColorPalette::changeColorPalette(QWidget *parent) :
                                    "margin-top: -2px; /* Отступ сверху */"
                                    "margin-bottom: -2px; /* Отступ снизу */"
                                    "border-radius: 9px; /* Радиус скругления углов */"
-                                   "}"
-                                   );
+                                   "}");
 
     // Установка стилей для слайдера цвета
     ui->colorSlide->setStyleSheet(styleSheet);
 }
 
-// Деструктор класса changeColorPalette
+/**
+ * @brief Деструктор класса changeColorPalette
+ */
 changeColorPalette::~changeColorPalette()
 {
     delete ui;
 }
 
-// Обработчик нажатия кнопки "OK"
+/**
+ * @brief Обработчик нажатия кнопки "OK"
+ */
 void changeColorPalette::on_ok_button_clicked()
 {
     // Генерируем сигнал об изменении цвета и передаем новое значение цвета, затем закрываем окно
@@ -66,14 +73,19 @@ void changeColorPalette::on_ok_button_clicked()
     this->close();
 }
 
-// Обработчик нажатия кнопки "Закрыть"
+/**
+ * @brief Обработчик нажатия кнопки "Закрыть"
+ */
 void changeColorPalette::on_close_button_clicked()
 {
     // Закрываем окно
     this->close();
 }
 
-// Обработчик перемещения слайдера цвета
+/**
+ * @brief Обработчик перемещения слайдера цвета
+ * @param position Позиция слайдера
+ */
 void changeColorPalette::on_colorSlide_sliderMoved(int position)
 {
     // Генерируем сигнал об изменении цвета и передаем новое значение цвета

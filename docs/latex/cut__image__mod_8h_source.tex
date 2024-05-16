@@ -1,0 +1,55 @@
+\doxysection{C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/cut\+\_\+image\+\_\+mod.h}
+\hypertarget{cut__image__mod_8h_source}{}\label{cut__image__mod_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CUT\_IMAGE\_MOD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CUT\_IMAGE\_MOD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QCloseEvent>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ui}{Ui}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cut__image__mod}{Cut\_image\_mod}};}
+\DoxyCodeLine{00009\ \}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cut__image__mod}{Cut\_image\_mod}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_cut__image__mod_a69e3f77ca03be0a221c5db9b307f87c5}{Cut\_image\_mod}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_cut__image__mod_ae206c1cc7b6b991d8a7f1174a0a160c2}{\string~Cut\_image\_mod}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_XSlider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_X2Slider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_YSlider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_Y2Slider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_cut\_ok\_clicked();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_cut\_cancellation\_clicked();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ closeEvent(QCloseEvent\ *event);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Указатель\ на\ UI\ форму}}
+\DoxyCodeLine{00074\ \ \ \ \ Ui::Cut\_image\_mod\ *ui;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Позиции\ для\ обрезки\ изображения}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 0,\ y\ =\ 0,\ x2\ =\ 0,\ y2\ =\ 0;\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ signals:}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cut__image__mod_ac2363d28fe6d4fc6494216a0d7347e26}{change\_slider\_position}}(\textcolor{keywordtype}{short}\ num\_type\_cut,\ \textcolor{keywordtype}{int}\ num\_cropped\_pixel);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cut__image__mod_a39ab8b04c7e3db39fed16ba9559d9a6b}{cut\_image\_ok\_press}}();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cut__image__mod_aaf68df790da0647e7b951f924e8d6c54}{cut\_image\_close\_press}}();}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CUT\_IMAGE\_MOD\_H}}
+
+\end{DoxyCode}

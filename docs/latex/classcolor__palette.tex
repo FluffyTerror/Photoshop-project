@@ -1,0 +1,164 @@
+\doxysection{color\+\_\+palette Class Reference}
+\hypertarget{classcolor__palette}{}\label{classcolor__palette}\index{color\_palette@{color\_palette}}
+
+
+Класс цветовой палитры  
+
+
+
+
+{\ttfamily \#include $<$color\+\_\+palette.\+h$>$}
+
+Inheritance diagram for color\+\_\+palette\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcolor__palette}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcolor__palette_a0aecf15b5744629d25fe92c771149fa2}{auto\+\_\+color\+\_\+pal}} (std\+::vector$<$ QColor $>$ colors)
+\begin{DoxyCompactList}\small\item\em Слот для функции автоматического создания цветовой палитры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcolor__palette_a2bb7005a38b1f693c0c0f33cdeb113b8}{change\+\_\+color}} (int pos)
+\begin{DoxyCompactList}\small\item\em Слот для обработчика изменения цвета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcolor__palette_a67a896992818fd735040adf423af7423}{slots\+\_\+color\+\_\+pallete\+\_\+allow\+\_\+adding\+\_\+a\+\_\+new\+\_\+color}} (QColor New\+Color)
+\begin{DoxyCompactList}\small\item\em Слот для обновления цвета в палитре \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcolor__palette_af4dbfa0922afa39ed8e98a41fe3aa57b}{change\+Color\+Palette\+Image}} (QColor New\+Color)
+\begin{DoxyCompactList}\small\item\em Сигнал для изменения изображения палитры \end{DoxyCompactList}\item 
+\Hypertarget{classcolor__palette_a85e981fe4462c75a943891c3ee580cf0}\label{classcolor__palette_a85e981fe4462c75a943891c3ee580cf0} 
+void {\bfseries palette\+Ok\+Click} ()
+\begin{DoxyCompactList}\small\item\em Сигнал нажатия кнопки "{}\+OK"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classcolor__palette_a4d0e086d468fe5f3bdaec3c791d1d829}\label{classcolor__palette_a4d0e086d468fe5f3bdaec3c791d1d829} 
+void {\bfseries palette\+Close\+Click} ()
+\begin{DoxyCompactList}\small\item\em Сигнал для нажатия кнопки "{}Закрыть"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcolor__palette_a68237755f6a07a7bcc1cdac3dbf595fb}{color\+\_\+button\+\_\+clicked}} (QColor Old\+Color)
+\begin{DoxyCompactList}\small\item\em Сигнал для обновления цвета в палитре \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcolor__palette_acf8d5e4c0206586ef7acbcd25b29c503}{color\+\_\+palette}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{classcolor__palette}{color\+\_\+palette}. \end{DoxyCompactList}\item 
+\Hypertarget{classcolor__palette_ab7cf6fa4dc7c61f8f4f883d8390aaa9d}\label{classcolor__palette_ab7cf6fa4dc7c61f8f4f883d8390aaa9d} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}color\+\_\+palette} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{classcolor__palette}{color\+\_\+palette}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс цветовой палитры 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcolor__palette_acf8d5e4c0206586ef7acbcd25b29c503}\label{classcolor__palette_acf8d5e4c0206586ef7acbcd25b29c503} 
+\index{color\_palette@{color\_palette}!color\_palette@{color\_palette}}
+\index{color\_palette@{color\_palette}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{color\_palette()}{color\_palette()}}
+{\footnotesize\ttfamily color\+\_\+palette\+::color\+\_\+palette (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \doxylink{classcolor__palette}{color\+\_\+palette}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Указатель на родительский виджет. По умолчанию равен nullptr. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcolor__palette_a0aecf15b5744629d25fe92c771149fa2}\label{classcolor__palette_a0aecf15b5744629d25fe92c771149fa2} 
+\index{color\_palette@{color\_palette}!auto\_color\_pal@{auto\_color\_pal}}
+\index{auto\_color\_pal@{auto\_color\_pal}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{auto\_color\_pal}{auto\_color\_pal}}
+{\footnotesize\ttfamily void color\+\_\+palette\+::auto\+\_\+color\+\_\+pal (\begin{DoxyParamCaption}\item[{std\+::vector$<$ QColor $>$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для функции автоматического создания цветовой палитры 
+
+Функция автоматического создания цветовой палитры.
+
+
+\begin{DoxyParams}{Parameters}
+{\em colors} & Вектор цветов\\
+\hline
+{\em colors} & Вектор цветов для создания палитры. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcolor__palette_a2bb7005a38b1f693c0c0f33cdeb113b8}\label{classcolor__palette_a2bb7005a38b1f693c0c0f33cdeb113b8} 
+\index{color\_palette@{color\_palette}!change\_color@{change\_color}}
+\index{change\_color@{change\_color}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{change\_color}{change\_color}}
+{\footnotesize\ttfamily void color\+\_\+palette\+::change\+\_\+color (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обработчика изменения цвета 
+
+Обработчик изменения цвета.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Позиция ползунка\\
+\hline
+{\em pos} & Позиция нового цвета. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcolor__palette_af4dbfa0922afa39ed8e98a41fe3aa57b}\label{classcolor__palette_af4dbfa0922afa39ed8e98a41fe3aa57b} 
+\index{color\_palette@{color\_palette}!changeColorPaletteImage@{changeColorPaletteImage}}
+\index{changeColorPaletteImage@{changeColorPaletteImage}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{changeColorPaletteImage}{changeColorPaletteImage}}
+{\footnotesize\ttfamily void color\+\_\+palette\+::change\+Color\+Palette\+Image (\begin{DoxyParamCaption}\item[{QColor}]{New\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал для изменения изображения палитры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Color} & Новый цвет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcolor__palette_a68237755f6a07a7bcc1cdac3dbf595fb}\label{classcolor__palette_a68237755f6a07a7bcc1cdac3dbf595fb} 
+\index{color\_palette@{color\_palette}!color\_button\_clicked@{color\_button\_clicked}}
+\index{color\_button\_clicked@{color\_button\_clicked}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{color\_button\_clicked}{color\_button\_clicked}}
+{\footnotesize\ttfamily void color\+\_\+palette\+::color\+\_\+button\+\_\+clicked (\begin{DoxyParamCaption}\item[{QColor}]{Old\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал для обновления цвета в палитре 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Old\+Color} & Старый цвет \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcolor__palette_a67a896992818fd735040adf423af7423}\label{classcolor__palette_a67a896992818fd735040adf423af7423} 
+\index{color\_palette@{color\_palette}!slots\_color\_pallete\_allow\_adding\_a\_new\_color@{slots\_color\_pallete\_allow\_adding\_a\_new\_color}}
+\index{slots\_color\_pallete\_allow\_adding\_a\_new\_color@{slots\_color\_pallete\_allow\_adding\_a\_new\_color}!color\_palette@{color\_palette}}
+\doxysubsubsection{\texorpdfstring{slots\_color\_pallete\_allow\_adding\_a\_new\_color}{slots\_color\_pallete\_allow\_adding\_a\_new\_color}}
+{\footnotesize\ttfamily void color\+\_\+palette\+::slots\+\_\+color\+\_\+pallete\+\_\+allow\+\_\+adding\+\_\+a\+\_\+new\+\_\+color (\begin{DoxyParamCaption}\item[{QColor}]{New\+Color\+Pal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Слот для обновления цвета в палитре 
+
+Слот для обновления цвета в палитре.
+
+
+\begin{DoxyParams}{Parameters}
+{\em New\+Color} & Новый цвет\\
+\hline
+{\em New\+Color\+Pal} & Новый цвет для палитры. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/color\+\_\+palette.\+h\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/color\+\_\+palette.\+cpp\end{DoxyCompactItemize}

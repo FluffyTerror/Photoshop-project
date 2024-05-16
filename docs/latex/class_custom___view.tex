@@ -1,0 +1,166 @@
+\doxysection{Custom\+\_\+\+View Class Reference}
+\hypertarget{class_custom___view}{}\label{class_custom___view}\index{Custom\_View@{Custom\_View}}
+
+
+Класс для пользовательского представления, поддерживающего перетаскивание изображений  
+
+
+
+
+{\ttfamily \#include $<$events.\+h$>$}
+
+Inheritance diagram for Custom\+\_\+\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_custom___view}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_custom___view_abde61538239a6b81d8f6109e633e86f4}{Image\+Loaded}} (const QString \&filepath)
+\begin{DoxyCompactList}\small\item\em Сигнал об успешной загрузке изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_custom___view_a49b47a087f0d8461cd0806cee880fff3}{Custom\+\_\+\+View}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_custom___view}{Custom\+\_\+\+View}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom___view_aee08c90506ee3496c5fb76efd974dbec}{load\+Image}} (const QString \&filename)
+\begin{DoxyCompactList}\small\item\em Загрузка изображения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_custom___view_aabcb9c815f9dff1d7b43d199b75695ee}\label{class_custom___view_aabcb9c815f9dff1d7b43d199b75695ee} 
+QGraphics\+Scene \texorpdfstring{$\ast$}{*} {\bfseries scene}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_custom___view_a9f1cd565121e9ffd5a18ba9fc1b5e872}{drag\+Enter\+Event}} (QDrag\+Enter\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обработчик события входа перетаскиваемого элемента в область виджета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom___view_a2da115f0ea8025a0a2868ee08cf4867c}{drag\+Leave\+Event}} (QDrag\+Leave\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обработчик события выхода перетаскиваемого элемента из области виджета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom___view_af23291273aafeed46da131090682ecdd}{drag\+Move\+Event}} (QDrag\+Move\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обработчик события перемещения перетаскиваемого элемента в области виджета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom___view_afb3be40995ff6db2ce94619cc0c2a1a3}{drop\+Event}} (QDrop\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обработчик события "{}бросания"{} элемента в область виджета \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для пользовательского представления, поддерживающего перетаскивание изображений 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_custom___view_a49b47a087f0d8461cd0806cee880fff3}\label{class_custom___view_a49b47a087f0d8461cd0806cee880fff3} 
+\index{Custom\_View@{Custom\_View}!Custom\_View@{Custom\_View}}
+\index{Custom\_View@{Custom\_View}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{Custom\_View()}{Custom\_View()}}
+{\footnotesize\ttfamily Custom\+\_\+\+View\+::\+Custom\+\_\+\+View (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор класса \doxylink{class_custom___view}{Custom\+\_\+\+View}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Указатель на родительский виджет. По умолчанию равен nullptr. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_custom___view_a9f1cd565121e9ffd5a18ba9fc1b5e872}\label{class_custom___view_a9f1cd565121e9ffd5a18ba9fc1b5e872} 
+\index{Custom\_View@{Custom\_View}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Enter\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обработчик события входа перетаскиваемого элемента в область виджета 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Указатель на событие входа перетаскиваемого элемента \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom___view_a2da115f0ea8025a0a2868ee08cf4867c}\label{class_custom___view_a2da115f0ea8025a0a2868ee08cf4867c} 
+\index{Custom\_View@{Custom\_View}!dragLeaveEvent@{dragLeaveEvent}}
+\index{dragLeaveEvent@{dragLeaveEvent}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{dragLeaveEvent()}{dragLeaveEvent()}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::drag\+Leave\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Leave\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обработчик события выхода перетаскиваемого элемента из области виджета 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Указатель на событие выхода перетаскиваемого элемента \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom___view_af23291273aafeed46da131090682ecdd}\label{class_custom___view_af23291273aafeed46da131090682ecdd} 
+\index{Custom\_View@{Custom\_View}!dragMoveEvent@{dragMoveEvent}}
+\index{dragMoveEvent@{dragMoveEvent}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{dragMoveEvent()}{dragMoveEvent()}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::drag\+Move\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Move\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обработчик события перемещения перетаскиваемого элемента в области виджета 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Указатель на событие перемещения перетаскиваемого элемента \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom___view_afb3be40995ff6db2ce94619cc0c2a1a3}\label{class_custom___view_afb3be40995ff6db2ce94619cc0c2a1a3} 
+\index{Custom\_View@{Custom\_View}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::drop\+Event (\begin{DoxyParamCaption}\item[{QDrop\+Event \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обработчик события "{}бросания"{} элемента в область виджета 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Указатель на событие "{}бросания"{} элемента \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom___view_abde61538239a6b81d8f6109e633e86f4}\label{class_custom___view_abde61538239a6b81d8f6109e633e86f4} 
+\index{Custom\_View@{Custom\_View}!ImageLoaded@{ImageLoaded}}
+\index{ImageLoaded@{ImageLoaded}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{ImageLoaded}{ImageLoaded}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::\+Image\+Loaded (\begin{DoxyParamCaption}\item[{const QString \&}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Сигнал об успешной загрузке изображения 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & Путь к загруженному файлу изображения \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom___view_aee08c90506ee3496c5fb76efd974dbec}\label{class_custom___view_aee08c90506ee3496c5fb76efd974dbec} 
+\index{Custom\_View@{Custom\_View}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!Custom\_View@{Custom\_View}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily void Custom\+\_\+\+View\+::load\+Image (\begin{DoxyParamCaption}\item[{const QString \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Загрузка изображения 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Путь к загружаемому файлу изображения \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/events.\+h\item 
+C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/events.\+cpp\end{DoxyCompactItemize}

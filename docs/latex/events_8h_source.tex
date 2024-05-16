@@ -1,0 +1,53 @@
+\doxysection{C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/events.h}
+\hypertarget{events_8h_source}{}\label{events_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EVENTS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EVENTS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QGraphicsView>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QDragEnterEvent>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QDragLeaveEvent>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QDragMoveEvent>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QDropEvent>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMimeData>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QGraphicsPixmapItem>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QPixmap>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QFileDialog>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QMessageBox>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_events}{Events}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_events_aab651428bab6b09db3564753afb225a6}{Events}}();}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_custom___view}{Custom\_View}}\ :\ \textcolor{keyword}{public}\ QGraphicsView}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_custom___view_a49b47a087f0d8461cd0806cee880fff3}{Custom\_View}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_aee08c90506ee3496c5fb76efd974dbec}{loadImage}}(\textcolor{keyword}{const}\ QString\ \&filename);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Указатель\ на\ графическую\ сцену}}
+\DoxyCodeLine{00050\ \ \ \ \ QGraphicsScene\ *scene;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_a9f1cd565121e9ffd5a18ba9fc1b5e872}{dragEnterEvent}}(QDragEnterEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_a2da115f0ea8025a0a2868ee08cf4867c}{dragLeaveEvent}}(QDragLeaveEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_af23291273aafeed46da131090682ecdd}{dragMoveEvent}}(QDragMoveEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_afb3be40995ff6db2ce94619cc0c2a1a3}{dropEvent}}(QDropEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ signals:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom___view_abde61538239a6b81d8f6109e633e86f4}{ImageLoaded}}(\textcolor{keyword}{const}\ QString\ \&filepath);}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EVENTS\_H}}
+
+\end{DoxyCode}

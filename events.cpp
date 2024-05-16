@@ -1,11 +1,17 @@
+
 #include "events.h"
 
+/**
+ * @brief Конструктор класса Events
+ */
 Events::Events()
 {
-
 }
 
-// Конструктор класса Custom_View
+/**
+ * @brief Конструктор класса Custom_View
+ * @param parent Указатель на родительский виджет. По умолчанию равен nullptr.
+ */
 Custom_View::Custom_View(QWidget *parent) : QGraphicsView(parent)
 {
     // Установка возможности принятия перетаскиваемых элементов
@@ -19,7 +25,10 @@ Custom_View::Custom_View(QWidget *parent) : QGraphicsView(parent)
     viewport()->installEventFilter(this);
 }
 
-// Обработчик события входа перетаскиваемого элемента в область виджета
+/**
+ * @brief Обработчик события входа перетаскиваемого элемента в область виджета
+ * @param event Указатель на событие входа перетаскиваемого элемента
+ */
 void Custom_View::dragEnterEvent(QDragEnterEvent *event)
 {
     QDragEnterEvent *dragEnterEvent = static_cast<QDragEnterEvent *>(event);
@@ -29,20 +38,29 @@ void Custom_View::dragEnterEvent(QDragEnterEvent *event)
     }
 }
 
-// Обработчик события выхода перетаскиваемого элемента из области виджета
+/**
+ * @brief Обработчик события выхода перетаскиваемого элемента из области виджета
+ * @param event Указатель на событие выхода перетаскиваемого элемента
+ */
 void Custom_View::dragLeaveEvent(QDragLeaveEvent *event)
 {
     event->accept();
 }
 
-// Обработчик события перемещения перетаскиваемого элемента в области виджета
+/**
+ * @brief Обработчик события перемещения перетаскиваемого элемента в области виджета
+ * @param event Указатель на событие перемещения перетаскиваемого элемента
+ */
 void Custom_View::dragMoveEvent(QDragMoveEvent *event)
 {
     event->accept();
     event->acceptProposedAction();
 }
 
-// Обработчик события "бросания" элемента в область виджета
+/**
+ * @brief Обработчик события "бросания" элемента в область виджета
+ * @param event Указатель на событие "бросания" элемента
+ */
 void Custom_View::dropEvent(QDropEvent *event)
 {
     if (event->source() == this)
@@ -63,7 +81,10 @@ void Custom_View::dropEvent(QDropEvent *event)
     }
 }
 
-// Загрузка изображения
+/**
+ * @brief Загрузка изображения
+ * @param filename Путь к загружаемому файлу изображения
+ */
 void Custom_View::loadImage(const QString &filename)
 {
     QPixmap pixmap(filename);
@@ -89,5 +110,3 @@ void Custom_View::loadImage(const QString &filename)
         QMessageBox::warning(nullptr, tr("Warning"), tr("Failed to load image!"));
     }
 }
-
-

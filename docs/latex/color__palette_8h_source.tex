@@ -1,0 +1,69 @@
+\doxysection{C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/color\+\_\+palette.h}
+\hypertarget{color__palette_8h_source}{}\label{color__palette_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COLOR\_PALETTE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COLOR\_PALETTE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QCloseEvent>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}changecolorpalette.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ui}{Ui}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcolor__palette}{color\_palette}};}
+\DoxyCodeLine{00017\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcolor__palette}{color\_palette}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classcolor__palette_acf8d5e4c0206586ef7acbcd25b29c503}{color\_palette}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classcolor__palette_ab7cf6fa4dc7c61f8f4f883d8390aaa9d}{\string~color\_palette}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a0aecf15b5744629d25fe92c771149fa2}{auto\_color\_pal}}(std::vector<QColor>\ colors);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a2bb7005a38b1f693c0c0f33cdeb113b8}{change\_color}}(\textcolor{keywordtype}{int}\ pos);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a67a896992818fd735040adf423af7423}{slots\_color\_pallete\_allow\_adding\_a\_new\_color}}(QColor\ NewColor);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_spinBox\_valueChanged(\textcolor{keywordtype}{int}\ arg1);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ closeEvent(QCloseEvent\ *event);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ handleColorButtonClicked(\textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_ok\_button\_clicked();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_close\_button\_clicked();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \ \ Ui::color\_palette\ *ui;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00095\ \ \ \ \ std::vector<QPushButton*>\ buttons;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{classchange_color_palette}{changeColorPalette}}\ *ChangeColor\_Main;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00105\ \ \ \ \ std::vector<QColor>\ QColorsPalette;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ clearPalette();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ signals:}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_af4dbfa0922afa39ed8e98a41fe3aa57b}{changeColorPaletteImage}}(QColor\ NewColor);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a85e981fe4462c75a943891c3ee580cf0}{paletteOkClick}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a4d0e086d468fe5f3bdaec3c791d1d829}{paletteCloseClick}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcolor__palette_a68237755f6a07a7bcc1cdac3dbf595fb}{color\_button\_clicked}}(QColor\ OldColor);}
+\DoxyCodeLine{00134\ \};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COLOR\_PALETTE\_H}}
+
+\end{DoxyCode}

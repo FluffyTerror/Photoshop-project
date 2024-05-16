@@ -1,0 +1,60 @@
+\doxysection{C\+:/\+Users/83532/\+QT -\/ zalupa/\+Uchebka\+\_\+\+Photoshop/huesaturation.h}
+\hypertarget{huesaturation_8h_source}{}\label{huesaturation_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HUESATURATION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HUESATURATION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ui}{Ui}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhuesaturation}{huesaturation}};}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhuesaturation}{huesaturation}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhuesaturation_a67f793b760f7e4a12863d4d52b4dacc3}{huesaturation}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classhuesaturation_a64c672dbb0115d89a7b5560548942469}{\string~huesaturation}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_AutoButton\_clicked();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_CancelButton\_clicked();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_AcceptButton\_clicked();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_HueSlider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_SaturationSlider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_ValueSlider\_sliderMoved(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ closeEvent(QCloseEvent\ *event);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ signals:}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_ab3e071884f54dc45d67702eb4d885a03}{parametersChanged}}(\textcolor{keywordtype}{int}\ hue,\ \textcolor{keywordtype}{int}\ saturation,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_aea1b29545311dcb904a8941f6bce53fc}{parametersAccepted}}(\textcolor{keywordtype}{int}\ hue,\ \textcolor{keywordtype}{int}\ saturation,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_afeb84ff5e4cc5ae3728985983a2d27c1}{saturationChanged}}(\textcolor{keywordtype}{int}\ saturation);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_a116de5b22c777e70c24642ec2bb5ff51}{hueChanged}}(\textcolor{keywordtype}{int}\ hue);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_a2c5b077e9e27373ce492e56c475d32b9}{autoAccepted}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhuesaturation_a460ef152385bc57e5d8e498675533765}{CancelMono}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ initialSaturation\ =\ 0;\ \textcolor{comment}{//<\ Начальное\ значение\ насыщенности}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ initialHue\ =\ 0;\ \textcolor{comment}{//<\ Начальное\ значение\ оттенка}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ saturationValue;\ \textcolor{comment}{//<\ Текущее\ значение\ насыщенности}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ hueValue;\ \textcolor{comment}{//<\ Текущее\ значение\ оттенка}}
+\DoxyCodeLine{00113\ \ \ \ \ Ui::huesaturation\ *ui;\ \textcolor{comment}{//<\ Указатель\ на\ пользовательский\ интерфейс}}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HUESATURATION\_H}}
+
+\end{DoxyCode}
