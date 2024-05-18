@@ -8,6 +8,7 @@
 #include "cut_image_mod.h"
 #include "color_palette.h"
 #include <vector>
+#include <QToolBar>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -139,6 +140,7 @@ public slots:
      * @param OldColor Старый цвет, который нужно заменить
      */
     void clicked_color_button_in_pallete(QColor OldColor);
+    void createToolBar(); ///< Метод для создания панели инструментов
 
 signals:
     /**
@@ -177,6 +179,7 @@ private:
     void colors_sort(); ///< Функция сортировки цветов
 
     std::vector<coord_color> change_pixel_map_pallete; ///< Вектор для хранения карты пикселей, которые нужно изменить
+
 };
 
 #endif // MAINWINDOW_H

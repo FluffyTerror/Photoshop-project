@@ -68,8 +68,33 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(color_pal, &color_palette::paletteOkClick, this, &MainWindow::paletteOkClick);
     connect(color_pal, &color_palette::paletteCloseClick, this, &MainWindow::paletteCloseClick);
     connect(color_pal, &color_palette::color_button_clicked, this, &MainWindow::clicked_color_button_in_pallete);
+    createToolBar();
 }
 
+void MainWindow::createToolBar()
+{
+    QToolBar *toolBar = addToolBar(tr("Инструменты"));
+
+    QAction *selectAction = new QAction(tr("Выбрать"), this);
+    connect(selectAction, &QAction::triggered, this, &MainWindow::on_Select_clicked);
+    toolBar->addAction(selectAction);
+
+    QAction *monochromeAction = new QAction(tr("Монохром"), this);
+    connect(monochromeAction, &QAction::triggered, this, &MainWindow::on_Monochrome_clicked);
+    toolBar->addAction(monochromeAction);
+
+    QAction *cutAction = new QAction(tr("Обрезать"), this);
+    connect(cutAction, &QAction::triggered, this, &MainWindow::on_Cut_clicked);
+    toolBar->addAction(cutAction);
+
+    QAction *paletteAction = new QAction(tr("Палитра"), this);
+    connect(paletteAction, &QAction::triggered, this, &MainWindow::on_color_pal_clicked);
+    toolBar->addAction(paletteAction);
+
+    QAction *saveAction = new QAction(tr("Сохранить"), this);
+    connect(saveAction, &QAction::triggered, this, &MainWindow::on_SaveButton_clicked);
+    toolBar->addAction(saveAction);
+}
 /**
  * @brief Слот, обрабатывающий нажатие клавиши загрузки изображения
  */
