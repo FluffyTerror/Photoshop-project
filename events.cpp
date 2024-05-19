@@ -20,7 +20,8 @@ Custom_View::Custom_View(QWidget *parent) : QGraphicsView(parent)
     // Создание графической сцены и установка ее для виджета QGraphicsView
     scene = new QGraphicsScene(this);
     setScene(scene);
-
+    setRenderHint(QPainter::Antialiasing, true);
+    setRenderHint(QPainter::SmoothPixmapTransform, true);
     // Установка фильтра событий для viewport
     viewport()->installEventFilter(this);
 }
@@ -109,4 +110,9 @@ void Custom_View::loadImage(const QString &filename)
         // Вывод предупреждения о неудачной загрузке изображения
         QMessageBox::warning(nullptr, tr("Warning"), tr("Failed to load image!"));
     }
+}
+void Custom_View::resizeEvent(QResizeEvent *event)
+{
+    QGraphicsView::resizeEvent(event);
+
 }

@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    setCentralWidget(ui->graphicsView);
     // Устанавливаем заголовок окна
     this->setWindowTitle("Paint");
     // Отключаем статусную строку
@@ -654,6 +654,16 @@ void MainWindow::on_SaveButton_clicked()
     qDebug() << "Image saved successfully.";
 }
 
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    if (ui->graphicsView->scene->items().isEmpty()) {
+        return;
+    }
+    else{
+        ui->graphicsView->fitInView(ui->graphicsView->scene->items().first(), Qt::KeepAspectRatio);
+    }
+}
 
 /**
  * @brief Деструктор

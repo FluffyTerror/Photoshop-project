@@ -45,7 +45,7 @@ public:
      * @param filename Путь к загружаемому файлу изображения
      */
     void loadImage(const QString &filename);
-
+    void resizeEvent(QResizeEvent *event) override;
     // Указатель на графическую сцену
     QGraphicsScene *scene;
 

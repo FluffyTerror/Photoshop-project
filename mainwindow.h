@@ -156,6 +156,7 @@ signals:
     void color_pallete_allow_adding_a_new_color(QColor NewColor);
 
 private:
+    void resizeEvent(QResizeEvent *event) override ;
     /**
      * @brief Структура для хранения координат и информации о цвете
      */
