@@ -20,8 +20,8 @@ Custom_View::Custom_View(QWidget *parent) : QGraphicsView(parent)
     // Создание графической сцены и установка ее для виджета QGraphicsView
     scene = new QGraphicsScene(this);
     setScene(scene);
-    setRenderHint(QPainter::Antialiasing, true);
-    setRenderHint(QPainter::SmoothPixmapTransform, true);
+    //setRenderHint(QPainter::Antialiasing, true);
+    //setRenderHint(QPainter::SmoothPixmapTransform, true);
     // Установка фильтра событий для viewport
     viewport()->installEventFilter(this);
 }
